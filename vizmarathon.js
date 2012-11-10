@@ -22,18 +22,42 @@ d3.json("./data/world-countries.json", function(collection) {
       window.ituToCountry[country.id] = country.properties.name;
       window.countryToItu[country.properties.name] = country.id;
   }
+  
+  loadRouteData();
 });
 
-d3.csv("./data/flights/countriesToCountries.csv", function(countries){
-	window.routes = {}; //global var, hurrah!
-	countries.forEach(function(country){
-		if(!routes[country['country departure']]){
-			routes[country['country departure']] = {totalNbOfRoutes:0, neighbours:[]};
-		}
-		routes[country['country departure']].neighbours.push({
-			name:country['country arrival'],
-			nbOfRoutes: +(country['number of routes'])
-			});
-		routes[country['country departure']].totalNbOfRoutes += +(country['number of routes']);
-	});
-});
+loadRouteData = function() {
+    d3.csv("./data/flights/countriesToCountries.csv", function(countries){
+	    window.routes = {}; //global var, hurrah!
+    
+        if (typeof window.graph == 'undefined') {
+            window.graph = {};
+        }
+    
+        window.graph.countryNodes = {};
+    
+        countries.forEach(function(country){
+            var departure = country['country departure'].replace(/\s(.*)/,'');
+            
+    		if(!routes[departure]){
+    			routes[departure] = {totalNbOfRoutes:0, neighbours:[]};
+    		}
+    		routes[departure].neighbours.push({
+    			name: country['country arrival'].replace(/\s(.*)/,''),
+    			nbOfRoutes: +(country['number of routes'])
+    			});
+    		routes[departure].totalNbOfRoutes += +(country['number of routes']);
+        });
+    
+        for(var departure in routes) {
+            var arrivals = routes[departure];
+        
+            var departureKey = window.countryToItu[departure];
+        
+            window.graph.countryNodes[departureKey] = {
+                name: departure,
+                children: arrivals
+            }
+        }
+    });
+}
