@@ -35,5 +35,5 @@ map.countryOut = function(country){
 
 map.countryClick = function(country){
 	var cpath = d3.select("#" + country.id);
-
+	var rCountry = routes[ituToCountry[country.id]];
 }

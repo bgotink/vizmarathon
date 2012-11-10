@@ -38,7 +38,7 @@ loadRouteData = function() {
     
         countries.forEach(function(country){
             var departure = country['country departure'].replace(/\s(.*)/,'');
-            
+            console.log(departure);
     		if(!routes[departure]){
     			routes[departure] = {totalNbOfRoutes:0, neighbours:[]};
     		}
