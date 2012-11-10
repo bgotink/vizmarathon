@@ -28,8 +28,12 @@ d3.csv("./data/flights/countriesToCountries.csv", function(countries){
 	window.routes = {}; //global var, hurrah!
 	countries.forEach(function(country){
 		if(!routes[country['country departure']]){
-			routes[country['country departure']] = [];
+			routes[country['country departure']] = {totalNbOfRoutes:0, neighbours:[]};
 		}
-		routes[country['country departure']].push(country['country arrival']);
+		routes[country['country departure']].neighbours.push({
+			name:country['country arrival'],
+			nbOfRoutes: +(country['number of routes'])
+			});
+		routes[country['country departure']].totalNbOfRoutes += +(country['number of routes']);
 	});
 });
