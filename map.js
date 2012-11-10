@@ -45,12 +45,19 @@ map.countryClick = function(country){
 		return;
 	}
 	cpath.style("fill", "hsl(0, 85%,50%)");
-	
-	n = rCountry.totalNbOfRoutes;
+	maxRoutes = 0;
+	rCountry.neighbours.map(function(elem){if(elem.nbOfRoutes > maxRoutes) maxRoutes = elem.nbOfRoutes;});
+	n = maxRoutes;
+	d3.select("#"+country.id).style("fill", "hsl(247, 85%, " + 90 + "%)");
 	rCountry.neighbours.forEach(function(neighbour){
 		gneighbour = neighbour;
 		itu = countryToItu[neighbour.name];
-		contribution = 90 - (50 * (neighbour.nbOfRoutes / n)); 
-		d3.select("#"+itu).style("fill", "hsl(0, 85%, " + contribution + "%)");
+		contribution = 90 - (40 * (neighbour.nbOfRoutes / n));
+		console.log(country.properties.name + "===" + neighbour.name + "\tnbofroutes:" + neighbour.nbOfRoutes + "\tc:" + contribution);
+		if(country.properties.name	=== neighbour.name){
+			d3.select("#"+itu).style("fill", "hsl(247, 85%, " + contribution + "%)");
+		}else{
+			d3.select("#"+itu).style("fill", "hsl(0, 85%, " + contribution + "%)");
+		}
 	});
 }
