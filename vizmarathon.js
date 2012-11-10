@@ -16,7 +16,7 @@ d3.json("./data/world-countries.json", function(collection) {
     .enter().append("svg:path")
 	  .attr("id", function(d){return d.id;})
       .attr("d", map.path)
-	  .attr('fill', 'rgba(222,211,215,1)')
+	  .attr('fill', 'rgba(255,255,255,1)')
 	  .attr('stroke', 'rgba(29,91,85,1)')
       .attr('stroke-width', 1)
 	  .on("mouseover", map.countryOver)

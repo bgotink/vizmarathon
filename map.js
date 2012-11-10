@@ -34,13 +34,20 @@ map.countryOut = function(country){
 }
 
 map.countryClick = function(country){
-	map.states.selectAll("path").attr('fill', 'rgba(222,211,215,1)');
+	map.states.selectAll("path").style('fill', 'rgba(255,255,255,1)');
 	var cpath = d3.select("#" + country.id);
-	var rCountry = routes[ituToCountry[country.id]];
+	rCountry = routes[ituToCountry[country.id]];
 	if(!rCountry){
 		console.log("could not find airport data for:" + country.properties.name);
 		return;
 	}
-	var l = 100-Math.sqrt(2*rCountry.totalNbOfRoutes);
-	cpath.style("fill", "hsl(0, 85%," + l + "%)");
+	cpath.style("fill", "hsl(0, 85%,50%)");
+	
+	n = rCountry.totalNbOfRoutes;
+	rCountry.neighbours.forEach(function(neighbour){
+		gneighbour = neighbour;
+		itu = countryToItu[neighbour.name];
+		contribution = 90 - (50 * (neighbour.nbOfRoutes / n)); 
+		d3.select("#"+itu).style("fill", "hsl(0, 85%, " + contribution + "%)");
+	});
 }
