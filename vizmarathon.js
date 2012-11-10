@@ -29,13 +29,17 @@ d3.json("./data/world-countries.json", function(collection) {
   for (var idx in collection.features) {
       var country = collection.features[idx];
       
-      console.log(country.id, country);
+      //console.log(country.id, country);
       window.ituToCountry[country.id] = country.properties.name;
       window.countryToItu[country.properties.name] = country.id;
   }
   
   loadRouteData();
 });
+
+if (typeof window.graph == 'undefined') {
+    window.graph = {};
+}
 
 loadRouteData = function() {
     d3.csv("./data/flights/countriesToCountries.csv", function(countries){
@@ -54,10 +58,6 @@ loadRouteData = function() {
     		routes[departure].totalNbOfRoutes += +(country['number of routes']);
         });
     
-        if (typeof window.graph == 'undefined') {
-            window.graph = {};
-        }
-    
         window.graph.countryNodes = {};
     
         for(var departure in routes) {
@@ -75,4 +75,34 @@ loadRouteData = function() {
             window.graph.countryNodes[departureKey] = countryNode;
         }
     });
+}
+
+graph.TreeNode = function (country) {
+    if (typeof window.countryToItu[country] != 'undefined') {
+        country = window.countryToItu[country];
+    }
+    
+    var tmp = graph.countryNodes[country].clone();
+    this.name = tmp.name;
+    this.children = tmp.children;
+}
+
+graph.TreeNode.constructor = graph.TreeNode;
+
+graph.TreeNode.prototype.expandChild = function (name) {
+    if (typeof window.ituToCountry[name] != 'undefined') {
+        name = window.ituToCountry[name];
+    }
+    
+    for(var idx in this.children) {
+        var child = this.children[idx];
+        
+        if (child.name == name) {
+
+            if (typeof child.chilren != 'undefined') continue;
+
+            this.children[idx] = new graph.TreeNode(name);
+            this.children[idx].nbOfRoutes = child.nbOfRoutes;
+        }
+    }
 }
