@@ -1,5 +1,5 @@
 d3.json("./data/world-countries.json", function(collection) {
-  countries = collection; //debug purposes
+  countries = collection; //debug purposes (nope, keep this!)
   map.states.selectAll("path")
       .data(collection.features)
     .enter().append("svg:path")
