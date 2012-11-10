@@ -1,3 +1,14 @@
+var clone = function() {
+  var newObj = (this instanceof Array) ? [] : {};
+  for (var i in this) {
+    if (this[i] && typeof this[i] == "object") {
+      newObj[i] = this[i].clone();
+    } else newObj[i] = this[i]
+  } return newObj;
+}; 
+
+Object.defineProperty( Object.prototype, "clone", {value: clone, enumerable: false});
+
 d3.json("./data/world-countries.json", function(collection) {
   countries = collection; //debug purposes (nope, keep this!)
   map.states.selectAll("path")
@@ -30,34 +41,38 @@ loadRouteData = function() {
     d3.csv("./data/flights/countriesToCountries.csv", function(countries){
 	    window.routes = {}; //global var, hurrah!
     
+        countries.forEach(function(country){
+            var departure = country['country departure'].replace(/\s\(.*\)/,'');
+            
+    		if(!routes[departure]){
+    			routes[departure] = {totalNbOfRoutes:0, neighbours:[]};
+    		}
+    		routes[departure].neighbours.push({
+    			name: country['country arrival'].replace(/\s\(.*\)/,''),
+    			nbOfRoutes: +(country['number of routes'])
+    			});
+    		routes[departure].totalNbOfRoutes += +(country['number of routes']);
+        });
+    
         if (typeof window.graph == 'undefined') {
             window.graph = {};
         }
     
         window.graph.countryNodes = {};
     
-        countries.forEach(function(country){
-            var departure = country['country departure'].replace(/\s(.*)/,'');
-            
-    		if(!routes[departure]){
-    			routes[departure] = {totalNbOfRoutes:0, neighbours:[]};
-    		}
-    		routes[departure].neighbours.push({
-    			name: country['country arrival'].replace(/\s(.*)/,''),
-    			nbOfRoutes: +(country['number of routes'])
-    			});
-    		routes[departure].totalNbOfRoutes += +(country['number of routes']);
-        });
-    
         for(var departure in routes) {
-            var arrivals = routes[departure];
+            var countryNode = { name: departure },
+                arrivals = routes[departure];
+            
+            countryNode.children = arrivals.neighbours.map(
+                function (o) {
+                    return (typeof o == 'object') ? o.clone() : o;
+                }
+            );
         
             var departureKey = window.countryToItu[departure];
         
-            window.graph.countryNodes[departureKey] = {
-                name: departure,
-                children: arrivals
-            }
+            window.graph.countryNodes[departureKey] = countryNode;
         }
     });
 }
