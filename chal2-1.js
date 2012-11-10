@@ -22,19 +22,27 @@ var circles = svg.append("svg:g")
 
 var cells = svg.append("svg:g")
     .attr("id", "cells");
+	
+function countryOver(path){
+	console.log(path);
+	d3.select("#" + path.id).classed("class", "countryOver", true);
+}
 
+function countryOut(path){
+	path.classed("class", "countryOver", false);
+}
 d3.json("./data/world-countries.json", function(collection) {
   countries = collection;
   states.selectAll("path")
       .data(collection.features)
     .enter().append("svg:path")
-	  .attr("id", function(d){return d.properties.name;})
+	  .attr("id", function(d){return d.id;})
       .attr("d", path)
 	  .attr('fill', 'rgba(222,211,215,1)')
 	  .attr('stroke', 'rgba(29,91,85,1)')
       .attr('stroke-width', 1)
 	  .on("mouseover", countryOver)
-	  .on("mouseout", countrOut);
+	  .on("mouseout", countryOut);
 });
 
  /*
