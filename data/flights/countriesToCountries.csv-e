@@ -45,11 +45,11 @@ Algeria,Tunisia,2
 Algeria,Turkey,2
 Algeria,United Arab Emirates,1
 Algeria,United Kingdom,2
-American Samoa,United States of America,1
+American Samoa,United States,1
 Angola,Angola,38
 Angola,Brazil,2
 Angola,China,1
-Angola,Congo,8
+Angola,Congo (Kinshasa),8
 Angola,Cuba,1
 Angola,Egypt,1
 Angola,Ethiopia,1
@@ -86,7 +86,7 @@ Antigua and Barbuda,Saint Kitts and Nevis,3
 Antigua and Barbuda,Saint Lucia,1
 Antigua and Barbuda,Trinidad and Tobago,1
 Antigua and Barbuda,United Kingdom,2
-Antigua and Barbuda,United States of America,7
+Antigua and Barbuda,United States,7
 Argentina,Argentina,145
 Argentina,Australia,2
 Argentina,Bolivia,6
@@ -109,7 +109,7 @@ Argentina,Peru,6
 Argentina,South Africa,2
 Argentina,Spain,5
 Argentina,United Kingdom,1
-Argentina,United States of America,13
+Argentina,United States,13
 Argentina,Uruguay,10
 Argentina,Venezuela,2
 Armenia,Austria,2
@@ -136,7 +136,7 @@ Aruba,Netherlands,1
 Aruba,Netherlands Antilles,6
 Aruba,Panama,2
 Aruba,Suriname,1
-Aruba,United States of America,21
+Aruba,United States,21
 Aruba,Venezuela,3
 Australia,Argentina,2
 Australia,Australia,717
@@ -169,7 +169,7 @@ Australia,Taiwan,4
 Australia,Thailand,20
 Australia,Tonga,1
 Australia,United Arab Emirates,10
-Australia,United States of America,30
+Australia,United States,30
 Australia,Vanuatu,9
 Australia,Vietnam,6
 Austria,Albania,1
@@ -232,7 +232,7 @@ Austria,Turkey,10
 Austria,Ukraine,12
 Austria,United Arab Emirates,2
 Austria,United Kingdom,29
-Austria,United States of America,5
+Austria,United States,5
 Azerbaijan,Austria,2
 Azerbaijan,Azerbaijan,2
 Azerbaijan,Belarus,2
@@ -252,7 +252,7 @@ Azerbaijan,Turkmenistan,3
 Azerbaijan,Ukraine,3
 Azerbaijan,United Arab Emirates,2
 Azerbaijan,United Kingdom,3
-Azerbaijan,United States of America,1
+Azerbaijan,United States,1
 Azerbaijan,Uzbekistan,1
 Bahamas,Bahamas,61
 Bahamas,Canada,6
@@ -262,7 +262,7 @@ Bahamas,Jamaica,1
 Bahamas,Panama,1
 Bahamas,Turks and Caicos Islands,3
 Bahamas,United Kingdom,1
-Bahamas,United States of America,71
+Bahamas,United States,71
 Bahrain,Afghanistan,1
 Bahrain,Bangladesh,1
 Bahrain,Cyprus,2
@@ -329,7 +329,7 @@ Barbados,Saint Lucia,1
 Barbados,Saint Vincent and the Grenadines,2
 Barbados,Trinidad and Tobago,3
 Barbados,United Kingdom,6
-Barbados,United States of America,5
+Barbados,United States,5
 Belarus,Armenia,1
 Belarus,Austria,2
 Belarus,Azerbaijan,2
@@ -411,15 +411,15 @@ Belgium,Turkey,3
 Belgium,Ukraine,2
 Belgium,United Arab Emirates,4
 Belgium,United Kingdom,25
-Belgium,United States of America,22
+Belgium,United States,22
 Belize,Belize,30
 Belize,El Salvador,2
-Belize,United States of America,9
+Belize,United States,9
 Benin,Burkina Faso,9
 Benin,Cameroon,8
 Benin,Chad,1
-Benin,Congo,3
-Benin,Congo,3
+Benin,Congo (Brazzaville),3
+Benin,Congo (Kinshasa),3
 Benin,Cote d'Ivoire,3
 Benin,Equatorial Guinea,2
 Benin,France,1
@@ -432,7 +432,7 @@ Benin,Senegal,1
 Benin,Togo,2
 Bermuda,Canada,2
 Bermuda,United Kingdom,1
-Bermuda,United States of America,8
+Bermuda,United States,8
 Bhutan,Bangladesh,1
 Bhutan,India,5
 Bhutan,Nepal,1
@@ -445,7 +445,7 @@ Bolivia,Panama,1
 Bolivia,Paraguay,2
 Bolivia,Peru,7
 Bolivia,Spain,1
-Bolivia,United States of America,2
+Bolivia,United States,2
 Bosnia and Herzegovina,Austria,1
 Bosnia and Herzegovina,Bosnia and Herzegovina,2
 Bosnia and Herzegovina,Croatia,1
@@ -489,7 +489,7 @@ Brazil,Switzerland,1
 Brazil,Turkey,1
 Brazil,United Arab Emirates,2
 Brazil,United Kingdom,6
-Brazil,United States of America,52
+Brazil,United States,52
 Brazil,Uruguay,15
 Brazil,Venezuela,2
 British Virgin Islands,Antigua and Barbuda,1
@@ -542,18 +542,18 @@ Burkina Faso,Morocco,1
 Burkina Faso,Niger,7
 Burkina Faso,Senegal,1
 Burkina Faso,Togo,2
-Myanmar,Myanmar,51
-Myanmar,Cambodia,1
-Myanmar,China,7
-Myanmar,India,3
-Myanmar,Malaysia,3
-Myanmar,Singapore,4
-Myanmar,Taiwan,1
-Myanmar,Thailand,6
-Myanmar,Vietnam,2
+Burma,Burma,51
+Burma,Cambodia,1
+Burma,China,7
+Burma,India,3
+Burma,Malaysia,3
+Burma,Singapore,4
+Burma,Taiwan,1
+Burma,Thailand,6
+Burma,Vietnam,2
 Burundi,Kenya,9
 Burundi,Rwanda,5
-Cambodia,Myanmar,1
+Cambodia,Burma,1
 Cambodia,Cambodia,8
 Cambodia,China,7
 Cambodia,Hong Kong,1
@@ -569,8 +569,8 @@ Cameroon,Benin,8
 Cameroon,Cameroon,15
 Cameroon,Central African Republic,8
 Cameroon,Chad,4
-Cameroon,Congo,1
-Cameroon,Congo,14
+Cameroon,Congo (Brazzaville),1
+Cameroon,Congo (Kinshasa),14
 Cameroon,Equatorial Guinea,4
 Cameroon,Ethiopia,2
 Cameroon,France,4
@@ -639,7 +639,7 @@ Canada,Turks and Caicos Islands,4
 Canada,Ukraine,1
 Canada,United Arab Emirates,2
 Canada,United Kingdom,44
-Canada,United States of America,399
+Canada,United States,399
 Canada,Venezuela,1
 Canada,Virgin Islands,1
 Cape Verde,Cape Verde,32
@@ -652,17 +652,17 @@ Cape Verde,Sao Tome and Principe,1
 Cape Verde,Senegal,2
 Cape Verde,Spain,4
 Cape Verde,United Kingdom,8
-Cape Verde,United States of America,1
+Cape Verde,United States,1
 Cayman Islands,Bahamas,1
 Cayman Islands,Canada,2
 Cayman Islands,Cayman Islands,6
 Cayman Islands,Cuba,1
 Cayman Islands,Honduras,2
 Cayman Islands,Jamaica,2
-Cayman Islands,United States of America,18
+Cayman Islands,United States,18
 Central African Republic,Cameroon,8
 Central African Republic,Chad,1
-Central African Republic,Congo,1
+Central African Republic,Congo (Kinshasa),1
 Central African Republic,Ethiopia,2
 Central African Republic,France,1
 Central African Republic,Kenya,1
@@ -691,7 +691,7 @@ Chile,Panama,1
 Chile,Paraguay,2
 Chile,Peru,11
 Chile,Spain,2
-Chile,United States of America,10
+Chile,United States,10
 Chile,Uruguay,2
 Chile,Venezuela,1
 China,Afghanistan,1
@@ -703,7 +703,7 @@ China,Azerbaijan,2
 China,Bangladesh,2
 China,Belgium,2
 China,Brunei,1
-China,Myanmar,7
+China,Burma,7
 China,Cambodia,7
 China,Canada,12
 China,China,5381
@@ -754,12 +754,12 @@ China,Turkmenistan,1
 China,Ukraine,2
 China,United Arab Emirates,13
 China,United Kingdom,7
-China,United States of America,49
+China,United States,49
 China,Uzbekistan,2
 China,Vietnam,15
 Christmas Island,Australia,1
-Christmas Island,Cocos Islands,1
-Cocos Islands,Christmas Island,1
+Christmas Island,Cocos (Keeling) Islands,1
+Cocos (Keeling) Islands,Christmas Island,1
 Colombia,Argentina,2
 Colombia,Aruba,2
 Colombia,Bolivia,1
@@ -779,7 +779,7 @@ Colombia,Netherlands Antilles,2
 Colombia,Panama,12
 Colombia,Peru,3
 Colombia,Spain,5
-Colombia,United States of America,27
+Colombia,United States,27
 Colombia,Venezuela,5
 Comoros,Comoros,1
 Comoros,Djibouti,1
@@ -789,35 +789,35 @@ Comoros,Mayotte,3
 Comoros,Reunion,1
 Comoros,Tanzania,1
 Comoros,Yemen,1
-Congo,Benin,3
-Congo,Cameroon,1
-Congo,4
-Congo,Ethiopia,1
-Congo,France,1
-Congo,Gabon,2
-Congo,Morocco,1
-Congo,Angola,1
-Congo,Belgium,7
-Congo,Benin,2
-Congo,Cameroon,10
-Congo,Central African Republic,1
-Congo,4
-Congo,6
-Congo,Ethiopia,2
-Congo,France,2
-Congo,Gabon,4
-Congo,Kenya,4
-Congo,Malawi,1
-Congo,Morocco,2
-Congo,Rwanda,1
-Congo,South Africa,3
-Congo,Zambia,3
-Congo,Zimbabwe,1
+Congo (Brazzaville),Benin,3
+Congo (Brazzaville),Cameroon,1
+Congo (Brazzaville),Congo (Kinshasa),4
+Congo (Brazzaville),Ethiopia,1
+Congo (Brazzaville),France,1
+Congo (Brazzaville),Gabon,2
+Congo (Brazzaville),Morocco,1
+Congo (Kinshasa),Angola,1
+Congo (Kinshasa),Belgium,7
+Congo (Kinshasa),Benin,2
+Congo (Kinshasa),Cameroon,10
+Congo (Kinshasa),Central African Republic,1
+Congo (Kinshasa),Congo (Brazzaville),4
+Congo (Kinshasa),Congo (Kinshasa),6
+Congo (Kinshasa),Ethiopia,2
+Congo (Kinshasa),France,2
+Congo (Kinshasa),Gabon,4
+Congo (Kinshasa),Kenya,4
+Congo (Kinshasa),Malawi,1
+Congo (Kinshasa),Morocco,2
+Congo (Kinshasa),Rwanda,1
+Congo (Kinshasa),South Africa,3
+Congo (Kinshasa),Zambia,3
+Congo (Kinshasa),Zimbabwe,1
 Cook Islands,Australia,1
 Cook Islands,Cook Islands,14
 Cook Islands,French Polynesia,1
 Cook Islands,New Zealand,2
-Cook Islands,United States of America,3
+Cook Islands,United States,3
 Costa Rica,Canada,1
 Costa Rica,Colombia,4
 Costa Rica,Costa Rica,64
@@ -832,7 +832,7 @@ Costa Rica,Nicaragua,3
 Costa Rica,Panama,4
 Costa Rica,Peru,3
 Costa Rica,Spain,1
-Costa Rica,United States of America,38
+Costa Rica,United States,38
 Costa Rica,Venezuela,2
 Cote d'Ivoire,Belgium,6
 Cote d'Ivoire,Benin,3
@@ -962,7 +962,7 @@ Czech Republic,Turkey,1
 Czech Republic,Ukraine,6
 Czech Republic,United Arab Emirates,4
 Czech Republic,United Kingdom,11
-Czech Republic,United States of America,2
+Czech Republic,United States,2
 Denmark,Austria,8
 Denmark,Bahrain,1
 Denmark,Belgium,4
@@ -1010,7 +1010,7 @@ Denmark,Turkey,2
 Denmark,Ukraine,3
 Denmark,United Arab Emirates,2
 Denmark,United Kingdom,25
-Denmark,United States of America,8
+Denmark,United States,8
 Djibouti,Comoros,1
 Djibouti,Ethiopia,5
 Djibouti,Kenya,2
@@ -1049,7 +1049,7 @@ Dominican Republic,Spain,8
 Dominican Republic,Switzerland,1
 Dominican Republic,Turks and Caicos Islands,2
 Dominican Republic,United Kingdom,3
-Dominican Republic,United States of America,43
+Dominican Republic,United States,43
 Dominican Republic,Venezuela,1
 East Timor,Australia,3
 East Timor,Singapore,1
@@ -1063,7 +1063,7 @@ Ecuador,Netherlands,2
 Ecuador,Panama,4
 Ecuador,Peru,4
 Ecuador,Spain,2
-Ecuador,United States of America,10
+Ecuador,United States,10
 Ecuador,Venezuela,4
 Egypt,Algeria,2
 Egypt,Angola,1
@@ -1113,7 +1113,7 @@ Egypt,Turkey,4
 Egypt,Uganda,1
 Egypt,United Arab Emirates,14
 Egypt,United Kingdom,45
-Egypt,United States of America,2
+Egypt,United States,2
 Egypt,Uzbekistan,1
 Egypt,Yemen,5
 El Salvador,Belize,2
@@ -1129,7 +1129,7 @@ El Salvador,Nicaragua,4
 El Salvador,Panama,2
 El Salvador,Peru,2
 El Salvador,Spain,2
-El Salvador,United States of America,32
+El Salvador,United States,32
 Equatorial Guinea,Benin,2
 Equatorial Guinea,Cameroon,4
 Equatorial Guinea,Equatorial Guinea,4
@@ -1168,8 +1168,8 @@ Ethiopia,Cameroon,2
 Ethiopia,Central African Republic,2
 Ethiopia,Chad,1
 Ethiopia,China,1
-Ethiopia,Congo,1
-Ethiopia,Congo,2
+Ethiopia,Congo (Brazzaville),1
+Ethiopia,Congo (Kinshasa),2
 Ethiopia,Djibouti,4
 Ethiopia,Egypt,2
 Ethiopia,Equatorial Guinea,2
@@ -1215,7 +1215,7 @@ Fiji,Solomon Islands,2
 Fiji,South Korea,1
 Fiji,Tonga,2
 Fiji,Tuvalu,1
-Fiji,United States of America,7
+Fiji,United States,7
 Fiji,Vanuatu,3
 Fiji,Wallis and Futuna,1
 Finland,Austria,1
@@ -1251,7 +1251,7 @@ Finland,Turkey,1
 Finland,Ukraine,2
 Finland,United Arab Emirates,2
 Finland,United Kingdom,6
-Finland,United States of America,2
+Finland,United States,2
 France,Algeria,69
 France,Angola,2
 France,Argentina,1
@@ -1273,8 +1273,8 @@ France,Chad,1
 France,Chile,2
 France,China,7
 France,Colombia,1
-France,Congo,1
-France,Congo,2
+France,Congo (Brazzaville),1
+France,Congo (Kinshasa),2
 France,Cote d'Ivoire,2
 France,Croatia,4
 France,Cuba,3
@@ -1360,7 +1360,7 @@ France,Turkey,9
 France,Ukraine,2
 France,United Arab Emirates,6
 France,United Kingdom,122
-France,United States of America,78
+France,United States,78
 France,Uzbekistan,1
 France,Venezuela,1
 France,Vietnam,6
@@ -1373,12 +1373,12 @@ French Polynesia,French Polynesia,102
 French Polynesia,Japan,2
 French Polynesia,New Caledonia,1
 French Polynesia,New Zealand,3
-French Polynesia,United States of America,6
+French Polynesia,United States,6
 Gabon,Angola,1
 Gabon,Benin,5
 Gabon,Cameroon,4
-Gabon,Congo,2
-Gabon,Congo,4
+Gabon,Congo (Brazzaville),2
+Gabon,Congo (Kinshasa),4
 Gabon,Equatorial Guinea,2
 Gabon,Ethiopia,1
 Gabon,France,1
@@ -1517,7 +1517,7 @@ Germany,Turkmenistan,1
 Germany,Ukraine,13
 Germany,United Arab Emirates,18
 Germany,United Kingdom,119
-Germany,United States of America,115
+Germany,United States,115
 Germany,Uzbekistan,1
 Germany,Venezuela,1
 Germany,Vietnam,4
@@ -1543,7 +1543,7 @@ Ghana,Togo,6
 Ghana,Turkey,1
 Ghana,United Arab Emirates,1
 Ghana,United Kingdom,2
-Ghana,United States of America,5
+Ghana,United States,5
 Gibraltar,United Kingdom,5
 Greece,Albania,7
 Greece,Armenia,1
@@ -1581,7 +1581,7 @@ Greece,Turkey,6
 Greece,Ukraine,1
 Greece,United Arab Emirates,4
 Greece,United Kingdom,10
-Greece,United States of America,2
+Greece,United States,2
 Greenland,Denmark,1
 Greenland,Greenland,56
 Greenland,Iceland,2
@@ -1590,7 +1590,7 @@ Grenada,Canada,2
 Grenada,Puerto Rico,1
 Grenada,Saint Vincent and the Grenadines,2
 Grenada,Trinidad and Tobago,4
-Grenada,United States of America,3
+Grenada,United States,3
 Grenada,Venezuela,1
 Guadeloupe,Antigua and Barbuda,1
 Guadeloupe,Canada,1
@@ -1611,14 +1611,14 @@ Guam,Palau,2
 Guam,Philippines,2
 Guam,South Korea,3
 Guam,Taiwan,2
-Guam,United States of America,2
+Guam,United States,2
 Guatemala,Costa Rica,3
 Guatemala,El Salvador,5
 Guatemala,Guatemala,2
 Guatemala,Honduras,2
 Guatemala,Mexico,3
 Guatemala,Panama,1
-Guatemala,United States of America,23
+Guatemala,United States,23
 Guernsey,France,1
 Guernsey,Guernsey,2
 Guernsey,Isle of Man,1
@@ -1641,7 +1641,7 @@ Guinea-Bissau,Senegal,3
 Guinea-Bissau,Sierra Leone,1
 Guyana,Barbados,1
 Guyana,Trinidad and Tobago,1
-Guyana,United States of America,1
+Guyana,United States,1
 Haiti,Canada,1
 Haiti,Dominican Republic,2
 Haiti,France,1
@@ -1650,7 +1650,7 @@ Haiti,Haiti,2
 Haiti,Netherlands Antilles,1
 Haiti,Panama,1
 Haiti,Turks and Caicos Islands,2
-Haiti,United States of America,9
+Haiti,United States,9
 Honduras,Cayman Islands,2
 Honduras,Costa Rica,6
 Honduras,El Salvador,4
@@ -1658,7 +1658,7 @@ Honduras,Guatemala,2
 Honduras,Honduras,32
 Honduras,Mexico,1
 Honduras,Panama,1
-Honduras,United States of America,20
+Honduras,United States,20
 Hong Kong,Australia,13
 Hong Kong,Bahrain,1
 Hong Kong,Bangladesh,3
@@ -1696,7 +1696,7 @@ Hong Kong,Thailand,20
 Hong Kong,Turkey,1
 Hong Kong,United Arab Emirates,3
 Hong Kong,United Kingdom,5
-Hong Kong,United States of America,21
+Hong Kong,United States,21
 Hong Kong,Vietnam,10
 Hungary,Albania,2
 Hungary,Austria,1
@@ -1747,14 +1747,14 @@ Iceland,Netherlands,1
 Iceland,Norway,2
 Iceland,Sweden,1
 Iceland,United Kingdom,4
-Iceland,United States of America,4
+Iceland,United States,4
 India,Afghanistan,5
 India,Austria,4
 India,Bahrain,8
 India,Bangladesh,9
 India,Belgium,7
 India,Bhutan,5
-India,Myanmar,3
+India,Burma,3
 India,Canada,1
 India,China,8
 India,Egypt,1
@@ -1795,7 +1795,7 @@ India,Turkmenistan,2
 India,Ukraine,2
 India,United Arab Emirates,66
 India,United Kingdom,17
-India,United States of America,9
+India,United States,9
 India,Uzbekistan,2
 India,Yemen,2
 Indonesia,Australia,21
@@ -1883,7 +1883,7 @@ Ireland,Switzerland,4
 Ireland,Turkey,1
 Ireland,United Arab Emirates,2
 Ireland,United Kingdom,59
-Ireland,United States of America,23
+Ireland,United States,23
 Isle of Man,Guernsey,1
 Isle of Man,Ireland,1
 Isle of Man,Jersey,1
@@ -1924,7 +1924,7 @@ Israel,Thailand,2
 Israel,Turkey,1
 Israel,Ukraine,7
 Israel,United Kingdom,5
-Israel,United States of America,7
+Israel,United States,7
 Israel,Uzbekistan,1
 Italy,Albania,22
 Italy,Algeria,3
@@ -2003,7 +2003,7 @@ Italy,Turkey,12
 Italy,Ukraine,8
 Italy,United Arab Emirates,5
 Italy,United Kingdom,75
-Italy,United States of America,30
+Italy,United States,30
 Italy,Uzbekistan,2
 Italy,Venezuela,1
 Jamaica,Antigua and Barbuda,1
@@ -2019,7 +2019,7 @@ Jamaica,Panama,2
 Jamaica,Trinidad and Tobago,1
 Jamaica,Turks and Caicos Islands,1
 Jamaica,United Kingdom,6
-Jamaica,United States of America,37
+Jamaica,United States,37
 Japan,Australia,14
 Japan,Austria,2
 Japan,Canada,6
@@ -2058,7 +2058,7 @@ Japan,Thailand,17
 Japan,Turkey,4
 Japan,United Arab Emirates,6
 Japan,United Kingdom,5
-Japan,United States of America,86
+Japan,United States,86
 Japan,Uzbekistan,1
 Japan,Vietnam,16
 Jersey,Guernsey,2
@@ -2102,7 +2102,7 @@ Jordan,Turkey,2
 Jordan,Ukraine,2
 Jordan,United Arab Emirates,10
 Jordan,United Kingdom,4
-Jordan,United States of America,6
+Jordan,United States,6
 Jordan,Yemen,4
 Kazakhstan,Armenia,1
 Kazakhstan,Austria,2
@@ -2138,7 +2138,7 @@ Kenya,Cameroon,2
 Kenya,Central African Republic,1
 Kenya,Chad,1
 Kenya,Comoros,1
-Kenya,Congo,6
+Kenya,Congo (Kinshasa),6
 Kenya,Cote d'Ivoire,1
 Kenya,Djibouti,3
 Kenya,Egypt,1
@@ -2177,7 +2177,7 @@ Kenya,Yemen,1
 Kenya,Zambia,3
 Kenya,Zimbabwe,2
 Kiribati,Fiji,3
-Kiribati,United States of America,2
+Kiribati,United States,2
 Korea,China,3
 Korea,Thailand,1
 Kuwait,Bahrain,8
@@ -2203,7 +2203,7 @@ Kuwait,Tunisia,1
 Kuwait,Turkey,1
 Kuwait,United Arab Emirates,10
 Kuwait,United Kingdom,2
-Kuwait,United States of America,3
+Kuwait,United States,3
 Kuwait,Yemen,2
 Kyrgyzstan,Azerbaijan,1
 Kyrgyzstan,China,5
@@ -2246,7 +2246,7 @@ Latvia,Turkey,2
 Latvia,Ukraine,2
 Latvia,United Arab Emirates,1
 Latvia,United Kingdom,8
-Latvia,United States of America,1
+Latvia,United States,1
 Latvia,Uzbekistan,2
 Lebanon,Algeria,1
 Lebanon,Armenia,1
@@ -2361,7 +2361,7 @@ Madagascar,Mayotte,6
 Madagascar,Reunion,9
 Madagascar,South Africa,3
 Madagascar,Thailand,2
-Malawi,Congo,1
+Malawi,Congo (Kinshasa),1
 Malawi,Ethiopia,1
 Malawi,Kenya,3
 Malawi,Malawi,2
@@ -2373,7 +2373,7 @@ Malaysia,Australia,15
 Malaysia,Bahrain,2
 Malaysia,Bangladesh,3
 Malaysia,Brunei,4
-Malaysia,Myanmar,3
+Malaysia,Burma,3
 Malaysia,Cambodia,4
 Malaysia,China,22
 Malaysia,France,2
@@ -2468,7 +2468,7 @@ Malta,Turkey,2
 Malta,United Kingdom,18
 Marshall Islands,Marshall Islands,5
 Marshall Islands,Micronesia,4
-Marshall Islands,United States of America,2
+Marshall Islands,United States,2
 Martinique,Canada,1
 Martinique,Cuba,1
 Martinique,Dominican Republic,1
@@ -2530,7 +2530,7 @@ Mexico,Russia,2
 Mexico,Spain,10
 Mexico,Switzerland,1
 Mexico,United Kingdom,5
-Mexico,United States of America,339
+Mexico,United States,339
 Mexico,Venezuela,1
 Micronesia,Guam,4
 Micronesia,Marshall Islands,4
@@ -2571,8 +2571,8 @@ Morocco,Benin,1
 Morocco,Burkina Faso,1
 Morocco,Cameroon,2
 Morocco,Canada,1
-Morocco,Congo,1
-Morocco,Congo,2
+Morocco,Congo (Brazzaville),1
+Morocco,Congo (Kinshasa),2
 Morocco,Cote d'Ivoire,1
 Morocco,Denmark,2
 Morocco,Egypt,2
@@ -2610,7 +2610,7 @@ Morocco,Tunisia,3
 Morocco,Turkey,3
 Morocco,United Arab Emirates,3
 Morocco,United Kingdom,13
-Morocco,United States of America,2
+Morocco,United States,2
 Morocco,Western Sahara,4
 Mozambique,Angola,2
 Mozambique,Ethiopia,1
@@ -2719,7 +2719,7 @@ Netherlands,Turkey,5
 Netherlands,Ukraine,2
 Netherlands,United Arab Emirates,10
 Netherlands,United Kingdom,49
-Netherlands,United States of America,46
+Netherlands,United States,46
 Netherlands Antilles,Anguilla,1
 Netherlands Antilles,Antigua and Barbuda,1
 Netherlands Antilles,Aruba,6
@@ -2742,7 +2742,7 @@ Netherlands Antilles,Saint Kitts and Nevis,3
 Netherlands Antilles,Saint Lucia,1
 Netherlands Antilles,Suriname,1
 Netherlands Antilles,Trinidad and Tobago,3
-Netherlands Antilles,United States of America,22
+Netherlands Antilles,United States,22
 Netherlands Antilles,Venezuela,6
 Netherlands Antilles,Virgin Islands,2
 New Caledonia,Australia,5
@@ -2774,13 +2774,13 @@ New Zealand,Singapore,3
 New Zealand,South Korea,1
 New Zealand,Thailand,2
 New Zealand,Tonga,2
-New Zealand,United States of America,11
+New Zealand,United States,11
 New Zealand,Vanuatu,2
 Nicaragua,Costa Rica,4
 Nicaragua,El Salvador,3
 Nicaragua,Guatemala,3
 Nicaragua,Panama,2
-Nicaragua,United States of America,9
+Nicaragua,United States,9
 Niger,Algeria,1
 Niger,Burkina Faso,7
 Niger,France,3
@@ -2815,7 +2815,7 @@ Nigeria,Togo,2
 Nigeria,Turkey,1
 Nigeria,United Arab Emirates,1
 Nigeria,United Kingdom,5
-Nigeria,United States of America,4
+Nigeria,United States,4
 Niue,New Zealand,1
 Norfolk Island,Australia,6
 Norfolk Island,New Zealand,1
@@ -2855,7 +2855,7 @@ Norway,Thailand,1
 Norway,Turkey,3
 Norway,United Arab Emirates,1
 Norway,United Kingdom,36
-Norway,United States of America,3
+Norway,United States,3
 Oman,Bahrain,2
 Oman,Bangladesh,2
 Oman,Egypt,2
@@ -2942,7 +2942,7 @@ Panama,Peru,1
 Panama,Puerto Rico,3
 Panama,Spain,1
 Panama,Trinidad and Tobago,1
-Panama,United States of America,28
+Panama,United States,28
 Panama,Uruguay,1
 Panama,Venezuela,4
 Papua New Guinea,Australia,9
@@ -2978,7 +2978,7 @@ Peru,Panama,1
 Peru,Paraguay,1
 Peru,Peru,96
 Peru,Spain,3
-Peru,United States of America,17
+Peru,United States,17
 Peru,Uruguay,1
 Peru,Venezuela,2
 Philippines,Australia,5
@@ -3003,7 +3003,7 @@ Philippines,South Korea,25
 Philippines,Taiwan,7
 Philippines,Thailand,6
 Philippines,United Arab Emirates,4
-Philippines,United States of America,4
+Philippines,United States,4
 Philippines,Vietnam,3
 Poland,Armenia,2
 Poland,Austria,4
@@ -3042,7 +3042,7 @@ Poland,Switzerland,4
 Poland,Turkey,2
 Poland,Ukraine,8
 Poland,United Kingdom,62
-Poland,United States of America,6
+Poland,United States,6
 Poland,Vietnam,1
 Portugal,Algeria,1
 Portugal,Angola,3
@@ -3080,7 +3080,7 @@ Portugal,Tunisia,1
 Portugal,Turkey,2
 Portugal,Ukraine,2
 Portugal,United Kingdom,42
-Portugal,United States of America,10
+Portugal,United States,10
 Portugal,Venezuela,3
 Puerto Rico,Anguilla,1
 Puerto Rico,Antigua and Barbuda,3
@@ -3100,7 +3100,7 @@ Puerto Rico,Puerto Rico,11
 Puerto Rico,Saint Kitts and Nevis,2
 Puerto Rico,Saint Lucia,1
 Puerto Rico,Saint Vincent and the Grenadines,1
-Puerto Rico,United States of America,48
+Puerto Rico,United States,48
 Puerto Rico,Venezuela,1
 Puerto Rico,Virgin Islands,12
 Qatar,Algeria,1
@@ -3157,7 +3157,7 @@ Qatar,Turkey,3
 Qatar,Uganda,1
 Qatar,United Arab Emirates,8
 Qatar,United Kingdom,4
-Qatar,United States of America,6
+Qatar,United States,6
 Qatar,Yemen,3
 Reunion,Australia,1
 Reunion,Comoros,1
@@ -3269,12 +3269,12 @@ Russia,Turkmenistan,2
 Russia,Ukraine,40
 Russia,United Arab Emirates,19
 Russia,United Kingdom,8
-Russia,United States of America,17
+Russia,United States,17
 Russia,Uzbekistan,79
 Russia,Vietnam,7
 Rwanda,Belgium,1
 Rwanda,Burundi,5
-Rwanda,Congo,1
+Rwanda,Congo (Kinshasa),1
 Rwanda,Ethiopia,2
 Rwanda,Kenya,11
 Rwanda,Nigeria,1
@@ -3288,7 +3288,7 @@ Saint Kitts and Nevis,British Virgin Islands,1
 Saint Kitts and Nevis,Canada,1
 Saint Kitts and Nevis,Netherlands Antilles,2
 Saint Kitts and Nevis,Puerto Rico,2
-Saint Kitts and Nevis,United States of America,4
+Saint Kitts and Nevis,United States,4
 Saint Lucia,Antigua and Barbuda,1
 Saint Lucia,Barbados,2
 Saint Lucia,Canada,3
@@ -3299,7 +3299,7 @@ Saint Lucia,Puerto Rico,1
 Saint Lucia,Saint Vincent and the Grenadines,1
 Saint Lucia,Trinidad and Tobago,2
 Saint Lucia,United Kingdom,2
-Saint Lucia,United States of America,5
+Saint Lucia,United States,5
 Saint Pierre and Miquelon,Canada,3
 Saint Vincent and the Grenadines,Barbados,2
 Saint Vincent and the Grenadines,Dominica,1
@@ -3309,7 +3309,7 @@ Saint Vincent and the Grenadines,Saint Lucia,1
 Saint Vincent and the Grenadines,Trinidad and Tobago,1
 Samoa,Fiji,1
 Samoa,New Zealand,2
-Samoa,United States of America,2
+Samoa,United States,2
 Sao Tome and Principe,Angola,1
 Sao Tome and Principe,Cameroon,1
 Sao Tome and Principe,Cape Verde,1
@@ -3353,7 +3353,7 @@ Saudi Arabia,Tunisia,2
 Saudi Arabia,Turkey,10
 Saudi Arabia,United Arab Emirates,40
 Saudi Arabia,United Kingdom,6
-Saudi Arabia,United States of America,4
+Saudi Arabia,United States,4
 Saudi Arabia,Yemen,18
 Senegal,Algeria,1
 Senegal,Belgium,1
@@ -3379,7 +3379,7 @@ Senegal,Togo,2
 Senegal,Tunisia,1
 Senegal,Turkey,1
 Senegal,United Arab Emirates,1
-Senegal,United States of America,3
+Senegal,United States,3
 Serbia,Austria,6
 Serbia,Belgium,2
 Serbia,Bosnia and Herzegovina,1
@@ -3426,7 +3426,7 @@ Sierra Leone,United Kingdom,1
 Singapore,Australia,31
 Singapore,Bangladesh,2
 Singapore,Brunei,2
-Singapore,Myanmar,4
+Singapore,Burma,4
 Singapore,Cambodia,6
 Singapore,China,38
 Singapore,Denmark,2
@@ -3462,7 +3462,7 @@ Singapore,Thailand,24
 Singapore,Turkey,2
 Singapore,United Arab Emirates,7
 Singapore,United Kingdom,5
-Singapore,United States of America,4
+Singapore,United States,4
 Singapore,Vietnam,12
 Slovakia,Austria,1
 Slovakia,Belgium,1
@@ -3504,7 +3504,7 @@ South Africa,Argentina,2
 South Africa,Australia,4
 South Africa,Botswana,5
 South Africa,Brazil,1
-South Africa,Congo,3
+South Africa,Congo (Kinshasa),3
 South Africa,Egypt,2
 South Africa,Ethiopia,3
 South Africa,France,3
@@ -3541,7 +3541,7 @@ South Africa,Turkey,1
 South Africa,Uganda,1
 South Africa,United Arab Emirates,9
 South Africa,United Kingdom,8
-South Africa,United States of America,3
+South Africa,United States,3
 South Africa,Zambia,6
 South Africa,Zimbabwe,6
 South Korea,Australia,6
@@ -3582,7 +3582,7 @@ South Korea,Thailand,21
 South Korea,Turkey,3
 South Korea,United Arab Emirates,4
 South Korea,United Kingdom,2
-South Korea,United States of America,40
+South Korea,United States,40
 South Korea,Uzbekistan,3
 South Korea,Vietnam,13
 South Sudan,Egypt,1
@@ -3658,7 +3658,7 @@ Spain,Turkey,7
 Spain,Ukraine,6
 Spain,United Arab Emirates,1
 Spain,United Kingdom,290
-Spain,United States of America,49
+Spain,United States,49
 Spain,Uruguay,2
 Spain,Venezuela,6
 Sri Lanka,Bahrain,2
@@ -3745,7 +3745,7 @@ Sweden,Turkey,3
 Sweden,Ukraine,1
 Sweden,United Arab Emirates,1
 Sweden,United Kingdom,28
-Sweden,United States of America,5
+Sweden,United States,5
 Switzerland,Algeria,1
 Switzerland,Austria,12
 Switzerland,Bahrain,1
@@ -3813,7 +3813,7 @@ Switzerland,Turkey,12
 Switzerland,Ukraine,3
 Switzerland,United Arab Emirates,7
 Switzerland,United Kingdom,60
-Switzerland,United States of America,29
+Switzerland,United States,29
 Switzerland,Uzbekistan,1
 Syria,Algeria,3
 Syria,Armenia,1
@@ -3848,7 +3848,7 @@ Syria,Venezuela,1
 Syria,Yemen,2
 Taiwan,Australia,4
 Taiwan,Austria,1
-Taiwan,Myanmar,1
+Taiwan,Burma,1
 Taiwan,Cambodia,2
 Taiwan,Canada,3
 Taiwan,China,165
@@ -3868,7 +3868,7 @@ Taiwan,South Korea,11
 Taiwan,Taiwan,52
 Taiwan,Thailand,8
 Taiwan,United Kingdom,1
-Taiwan,United States of America,18
+Taiwan,United States,18
 Taiwan,Vietnam,15
 Tajikistan,Afghanistan,2
 Tajikistan,China,3
@@ -3905,7 +3905,7 @@ Thailand,Bahrain,2
 Thailand,Bangladesh,6
 Thailand,Belgium,1
 Thailand,Brunei,2
-Thailand,Myanmar,6
+Thailand,Burma,6
 Thailand,Cambodia,5
 Thailand,China,42
 Thailand,Denmark,2
@@ -3954,7 +3954,7 @@ Thailand,Turkey,2
 Thailand,Ukraine,2
 Thailand,United Arab Emirates,6
 Thailand,United Kingdom,5
-Thailand,United States of America,1
+Thailand,United States,1
 Thailand,Uzbekistan,1
 Thailand,Vietnam,12
 Togo,Belgium,6
@@ -3985,7 +3985,7 @@ Trinidad and Tobago,Saint Vincent and the Grenadines,1
 Trinidad and Tobago,Suriname,2
 Trinidad and Tobago,Trinidad and Tobago,2
 Trinidad and Tobago,United Kingdom,1
-Trinidad and Tobago,United States of America,7
+Trinidad and Tobago,United States,7
 Trinidad and Tobago,Venezuela,2
 Tunisia,Algeria,2
 Tunisia,Austria,1
@@ -4099,7 +4099,7 @@ Turkey,Uganda,1
 Turkey,Ukraine,14
 Turkey,United Arab Emirates,7
 Turkey,United Kingdom,12
-Turkey,United States of America,7
+Turkey,United States,7
 Turkey,Uzbekistan,2
 Turkmenistan,Azerbaijan,3
 Turkmenistan,Belarus,1
@@ -4117,7 +4117,7 @@ Turks and Caicos Islands,Dominican Republic,2
 Turks and Caicos Islands,Haiti,2
 Turks and Caicos Islands,Jamaica,1
 Turks and Caicos Islands,Turks and Caicos Islands,6
-Turks and Caicos Islands,United States of America,11
+Turks and Caicos Islands,United States,11
 Tuvalu,Fiji,1
 Uganda,Bahrain,1
 Uganda,Belgium,6
@@ -4175,7 +4175,7 @@ Ukraine,Turkey,14
 Ukraine,Ukraine,46
 Ukraine,United Arab Emirates,12
 Ukraine,United Kingdom,5
-Ukraine,United States of America,1
+Ukraine,United States,1
 Ukraine,Uzbekistan,3
 Ukraine,Vietnam,1
 United Arab Emirates,Afghanistan,7
@@ -4258,7 +4258,7 @@ United Arab Emirates,Turkey,7
 United Arab Emirates,Turkmenistan,2
 United Arab Emirates,Ukraine,12
 United Arab Emirates,United Kingdom,20
-United Arab Emirates,United States of America,13
+United Arab Emirates,United States,13
 United Arab Emirates,Uzbekistan,2
 United Arab Emirates,Yemen,11
 United Kingdom,Albania,2
@@ -4360,106 +4360,106 @@ United Kingdom,Uganda,1
 United Kingdom,Ukraine,5
 United Kingdom,United Arab Emirates,20
 United Kingdom,United Kingdom,352
-United Kingdom,United States of America,159
+United Kingdom,United States,159
 United Kingdom,Uzbekistan,1
 United Kingdom,Vietnam,2
 United Kingdom,Zambia,1
 United Kingdom,Zimbabwe,1
-United States of America,American Samoa,1
-United States of America,Antigua and Barbuda,8
-United States of America,Argentina,13
-United States of America,Aruba,21
-United States of America,Australia,30
-United States of America,Austria,5
-United States of America,Azerbaijan,1
-United States of America,Bahamas,71
-United States of America,Barbados,6
-United States of America,Belgium,22
-United States of America,Belize,9
-United States of America,Bermuda,8
-United States of America,Bolivia,2
-United States of America,Brazil,52
-United States of America,Canada,399
-United States of America,Cape Verde,1
-United States of America,Cayman Islands,19
-United States of America,Chile,9
-United States of America,China,49
-United States of America,Colombia,27
-United States of America,Cook Islands,3
-United States of America,Costa Rica,39
-United States of America,Czech Republic,2
-United States of America,Denmark,8
-United States of America,Dominican Republic,43
-United States of America,Ecuador,10
-United States of America,Egypt,2
-United States of America,El Salvador,32
-United States of America,Ethiopia,1
-United States of America,Fiji,7
-United States of America,Finland,2
-United States of America,France,77
-United States of America,French Polynesia,6
-United States of America,Germany,115
-United States of America,Ghana,5
-United States of America,Greece,2
-United States of America,Grenada,3
-United States of America,Guam,2
-United States of America,Guatemala,23
-United States of America,Guyana,1
-United States of America,Haiti,9
-United States of America,Honduras,20
-United States of America,Hong Kong,21
-United States of America,Iceland,4
-United States of America,India,9
-United States of America,Ireland,20
-United States of America,Israel,7
-United States of America,Italy,30
-United States of America,Jamaica,38
-United States of America,Japan,86
-United States of America,Jordan,6
-United States of America,Kiribati,2
-United States of America,Kuwait,3
-United States of America,Latvia,1
-United States of America,Marshall Islands,2
-United States of America,Mexico,341
-United States of America,Morocco,2
-United States of America,Netherlands,46
-United States of America,Netherlands Antilles,24
-United States of America,New Zealand,13
-United States of America,Nicaragua,9
-United States of America,Nigeria,4
-United States of America,Norway,3
-United States of America,Pakistan,1
-United States of America,Panama,28
-United States of America,Peru,17
-United States of America,Philippines,2
-United States of America,Poland,6
-United States of America,Portugal,10
-United States of America,Puerto Rico,46
-United States of America,Qatar,6
-United States of America,Russia,17
-United States of America,Saint Kitts and Nevis,4
-United States of America,Saint Lucia,5
-United States of America,Samoa,1
-United States of America,Saudi Arabia,4
-United States of America,Senegal,3
-United States of America,Singapore,4
-United States of America,South Africa,3
-United States of America,South Korea,40
-United States of America,Spain,49
-United States of America,Sweden,5
-United States of America,Switzerland,29
-United States of America,Taiwan,17
-United States of America,Thailand,1
-United States of America,Trinidad and Tobago,7
-United States of America,Turkey,7
-United States of America,Turks and Caicos Islands,11
-United States of America,Ukraine,1
-United States of America,United Arab Emirates,13
-United States of America,United Kingdom,161
-United States of America,United States,9638
-United States of America,Uruguay,1
-United States of America,Venezuela,9
-United States of America,Virgin Islands,21
+United States,American Samoa,1
+United States,Antigua and Barbuda,8
+United States,Argentina,13
+United States,Aruba,21
+United States,Australia,30
+United States,Austria,5
+United States,Azerbaijan,1
+United States,Bahamas,71
+United States,Barbados,6
+United States,Belgium,22
+United States,Belize,9
+United States,Bermuda,8
+United States,Bolivia,2
+United States,Brazil,52
+United States,Canada,399
+United States,Cape Verde,1
+United States,Cayman Islands,19
+United States,Chile,9
+United States,China,49
+United States,Colombia,27
+United States,Cook Islands,3
+United States,Costa Rica,39
+United States,Czech Republic,2
+United States,Denmark,8
+United States,Dominican Republic,43
+United States,Ecuador,10
+United States,Egypt,2
+United States,El Salvador,32
+United States,Ethiopia,1
+United States,Fiji,7
+United States,Finland,2
+United States,France,77
+United States,French Polynesia,6
+United States,Germany,115
+United States,Ghana,5
+United States,Greece,2
+United States,Grenada,3
+United States,Guam,2
+United States,Guatemala,23
+United States,Guyana,1
+United States,Haiti,9
+United States,Honduras,20
+United States,Hong Kong,21
+United States,Iceland,4
+United States,India,9
+United States,Ireland,20
+United States,Israel,7
+United States,Italy,30
+United States,Jamaica,38
+United States,Japan,86
+United States,Jordan,6
+United States,Kiribati,2
+United States,Kuwait,3
+United States,Latvia,1
+United States,Marshall Islands,2
+United States,Mexico,341
+United States,Morocco,2
+United States,Netherlands,46
+United States,Netherlands Antilles,24
+United States,New Zealand,13
+United States,Nicaragua,9
+United States,Nigeria,4
+United States,Norway,3
+United States,Pakistan,1
+United States,Panama,28
+United States,Peru,17
+United States,Philippines,2
+United States,Poland,6
+United States,Portugal,10
+United States,Puerto Rico,46
+United States,Qatar,6
+United States,Russia,17
+United States,Saint Kitts and Nevis,4
+United States,Saint Lucia,5
+United States,Samoa,1
+United States,Saudi Arabia,4
+United States,Senegal,3
+United States,Singapore,4
+United States,South Africa,3
+United States,South Korea,40
+United States,Spain,49
+United States,Sweden,5
+United States,Switzerland,29
+United States,Taiwan,17
+United States,Thailand,1
+United States,Trinidad and Tobago,7
+United States,Turkey,7
+United States,Turks and Caicos Islands,11
+United States,Ukraine,1
+United States,United Arab Emirates,13
+United States,United Kingdom,161
+United States,United States,9638
+United States,Uruguay,1
+United States,Venezuela,9
+United States,Virgin Islands,21
 Uruguay,Argentina,11
 Uruguay,Brazil,14
 Uruguay,Chile,2
@@ -4467,7 +4467,7 @@ Uruguay,Panama,1
 Uruguay,Paraguay,3
 Uruguay,Peru,1
 Uruguay,Spain,2
-Uruguay,United States of America,1
+Uruguay,United States,1
 Uzbekistan,Azerbaijan,1
 Uzbekistan,China,2
 Uzbekistan,Egypt,1
@@ -4523,10 +4523,10 @@ Venezuela,Saint Vincent and the Grenadines,1
 Venezuela,Spain,5
 Venezuela,Syria,1
 Venezuela,Trinidad and Tobago,2
-Venezuela,United States of America,9
+Venezuela,United States,9
 Venezuela,Venezuela,96
 Vietnam,Australia,6
-Vietnam,Myanmar,2
+Vietnam,Burma,2
 Vietnam,Cambodia,7
 Vietnam,China,15
 Vietnam,France,6
@@ -4551,7 +4551,7 @@ Virgin Islands,British Virgin Islands,1
 Virgin Islands,France,1
 Virgin Islands,Netherlands Antilles,2
 Virgin Islands,Puerto Rico,11
-Virgin Islands,United States of America,22
+Virgin Islands,United States,22
 Virgin Islands,Virgin Islands,4
 Wallis and Futuna,Fiji,1
 Wallis and Futuna,New Caledonia,1
@@ -4577,7 +4577,7 @@ Yemen,United Arab Emirates,11
 Yemen,Yemen,43
 Zambia,Angola,1
 Zambia,Botswana,1
-Zambia,Congo,1
+Zambia,Congo (Kinshasa),1
 Zambia,Ethiopia,1
 Zambia,Kenya,5
 Zambia,Malawi,4
@@ -4587,7 +4587,7 @@ Zambia,United Kingdom,1
 Zambia,Zambia,9
 Zambia,Zimbabwe,5
 Zimbabwe,Botswana,1
-Zimbabwe,Congo,1
+Zimbabwe,Congo (Kinshasa),1
 Zimbabwe,Ethiopia,1
 Zimbabwe,Kenya,2
 Zimbabwe,Malawi,2
