@@ -11,8 +11,6 @@ Object.defineProperty( Object.prototype, "clone", {value: clone, enumerable: fal
 
 if (isMap) {
     map.init();
-} else {
-    graph.init();
 }
 
 d3.json("./data/world-countries.json", function(collection) {
@@ -83,35 +81,9 @@ loadRouteData = function() {
         
             window.graph.countryNodes[departureKey] = countryNode;
         }
-    });
-}
-
-graph.TreeNode = function (country) {
-    if (typeof window.countryToItu[country] != 'undefined') {
-        country = window.countryToItu[country];
-    }
-    
-    var tmp = graph.countryNodes[country].clone();
-    this.name = tmp.name;
-    this.children = tmp.children;
-}
-
-graph.TreeNode.constructor = graph.TreeNode;
-
-graph.TreeNode.prototype.expandChild = function (name) {
-    if (typeof window.ituToCountry[name] != 'undefined') {
-        name = window.ituToCountry[name];
-    }
-    
-    for(var idx in this.children) {
-        var child = this.children[idx];
         
-        if (child.name == name) {
-
-            if (typeof child.chilren != 'undefined') continue;
-
-            this.children[idx] = new graph.TreeNode(name);
-            this.children[idx].nbOfRoutes = child.nbOfRoutes;
+        if (isTree) {
+            graph.init();
         }
-    }
+    });
 }

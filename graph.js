@@ -1,5 +1,35 @@
 var graph = {};
 
+graph.TreeNode = function (country) {
+    if (typeof window.countryToItu[country] != 'undefined') {
+        country = window.countryToItu[country];
+    }
+    
+    var tmp = graph.countryNodes[country].clone();
+    this.name = tmp.name;
+    this.children = tmp.children;
+}
+
+graph.TreeNode.constructor = graph.TreeNode;
+
+graph.TreeNode.prototype.expandChild = function (name) {
+    if (typeof window.ituToCountry[name] != 'undefined') {
+        name = window.ituToCountry[name];
+    }
+    
+    for(var idx in this.children) {
+        var child = this.children[idx];
+        
+        if (child.name == name) {
+
+            if (typeof child.chilren != 'undefined') continue;
+
+            this.children[idx] = new graph.TreeNode(name);
+            this.children[idx].nbOfRoutes = child.nbOfRoutes;
+        }
+    }
+}
+
 //graph.svg = d3.select("body").insert("svg:svg")
 //   .attr("width", map.w)
 //   .attr("height", map.h);
@@ -30,16 +60,27 @@ var tree = d3.layout.tree()
   //  .x(function(d) { return x(d.x); })
     //.y(function(d) { return y(d.y); });
  
-var graph = d3.select("body").append("svg:svg")
+graph.graph = d3.select("body").append("svg:svg")
     .attr("width", radius * 2)
     .attr("height", radius * 2)
 	.append("g")
 	.attr("transform", "translate(" + radius + "," + radius + ")");
+    
+graph.fromPolarX = function(d) {
+    return d.y * Math.cos((d.x - 90) * Math.PI / 180);
+}
+
+graph.fromPolarY = function(d) {
+    return d.y * Math.sin((d.x - 90) * Math.PI / 180);
+}
 
 d3.json("./data/flare2.json", function(json) {
+    json = new graph.TreeNode('Myanmar');
+    json.expandChild('China');
+    
 	var nodes = tree.nodes(json);
 
-	var link = graph.selectAll("path.link")
+	var link = graph.graph.selectAll("path.link")
 		.data(tree.links(nodes))
 		.enter().append("path")
 		.attr("class", "link");
@@ -50,23 +91,27 @@ d3.json("./data/flare2.json", function(json) {
 		
 	//g.append("svg:path")
     //.attr("d", function(d) { return line(d); });
-	graph.selectAll("line")
+	graph.graph.selectAll("line")
 	.data(nodes)
 	.enter()
 	.append("line")
     .attr("x1", function(d){
-		return d.y*Math.cos((d.x-90)*Math.PI/180);
+		return graph.fromPolarX(d);
 	})
     .attr("y1", function(d){
-		return d.y*Math.sin((d.x-90)*Math.PI/180);
+		return graph.fromPolarY(d);
 	})
-    .attr("x2", 0)
-    .attr("y2", 0)
+    .attr("x2", function(d) { 
+        return (typeof d.parent == 'undefined') ? 0 : graph.fromPolarX(d.parent); 
+    })
+    .attr("y2", function(d) { 
+        return (typeof d.parent == 'undefined') ? 0 : graph.fromPolarY(d.parent);
+    })
 	.attr("stroke-width", 2)
 	.attr("stroke", "black");
  
  
-	var node = graph.selectAll("g.node")
+	var node = graph.graph.selectAll("g.node")
 		.data(nodes)
 		.enter().append("g")
 		.attr("class", "node")
