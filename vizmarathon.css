@@ -1,5 +1,11 @@
+path.country {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(29,91,85,1);
+    stroke-width:  1;
+}
+
 path.countryOver{
-	fill: #ffffff;
+	fill: hsl(206,10%,75%);
 }
 
 
@@ -7,4 +13,18 @@ path.countryOver{
   fill: none;
   stroke: #ccc;
   stroke-width: 1.5px;
+}
+
+.invisible {
+  display: none;
+}
+
+text#tooltip{
+	font-family: Verdana;
+	font-size: 14px;
+	fill: #020202;
+}
+
+svg.map {
+	background-color: hsl(206,58%,95%);
 }
