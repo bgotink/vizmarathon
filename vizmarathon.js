@@ -14,7 +14,7 @@ if (isMap) {
 }
 
 d3.json("./data/world-countries.json", function(collection) {
-//  countries = collection; //debug purposes (nope, keep this!)
+//  countries = collection; //debug purposes
 
   if (isMap) {
   map.states.selectAll("path")
@@ -22,12 +22,11 @@ d3.json("./data/world-countries.json", function(collection) {
     .enter().append("svg:path")
 	  .attr("id", function(d){return d.id;})
       .attr("d", map.path)
-	  .attr('fill', 'rgba(255,255,255,1)')
-	  .attr('stroke', 'rgba(29,91,85,1)')
-      .attr('stroke-width', 1)
+	  .classed("country", true)
 	  .on("mouseover", map.countryOver)
 	  .on("mouseout", map.countryOut)
-	  .on("click", map.countryClick);
+	  .on("click", map.countryClick)
+	  .on("mousemove", map.updateTooltip);
   }
 
   window.countryToItu = {};
