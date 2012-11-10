@@ -10,7 +10,7 @@ var clone = function() {
 Object.defineProperty( Object.prototype, "clone", {value: clone, enumerable: false});
 
 d3.json("./data/world-countries.json", function(collection) {
-  countries = collection; //debug purposes (nope, keep this!)
+//  countries = collection; //debug purposes (nope, keep this!)
   map.states.selectAll("path")
       .data(collection.features)
     .enter().append("svg:path")

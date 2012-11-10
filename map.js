@@ -34,14 +34,13 @@ map.countryOut = function(country){
 }
 
 map.countryClick = function(country){
-	incCountry = country;
 	map.states.selectAll("path").attr('fill', 'rgba(222,211,215,1)');
-	cpath = d3.select("#" + country.id);
-	rCountry = routes[ituToCountry[country.id]];
+	var cpath = d3.select("#" + country.id);
+	var rCountry = routes[ituToCountry[country.id]];
 	if(!rCountry){
 		console.log("could not find airport data for:" + country.properties.name);
 		return;
 	}
-	l = 100-Math.sqrt(2*rCountry.totalNbOfRoutes);
+	var l = 100-Math.sqrt(2*rCountry.totalNbOfRoutes);
 	cpath.style("fill", "hsl(0, 85%," + l + "%)");
 }
