@@ -25,11 +25,11 @@ d3.json("./data/world-countries.json", function(collection) {
 });
 
 d3.csv("./data/flights/countriesToCountries.csv", function(countries){
-	graph = {}; //global var, hurrah!
+	window.routes = {}; //global var, hurrah!
 	countries.forEach(function(country){
-		if(!graph[country['country departure']]){
-			graph[country['country departure']] = [];
+		if(!routes[country['country departure']]){
+			routes[country['country departure']] = [];
 		}
-		graph[''+country['country departure']].push(country['country arrival']);
+		routes[country['country departure']].push(country['country arrival']);
 	});
 });
