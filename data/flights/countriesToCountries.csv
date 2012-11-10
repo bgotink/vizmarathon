@@ -1393,7 +1393,7 @@ Gambia,Belgium,6
 Gambia,Germany,1
 Gambia,Ghana,1
 Gambia,Guinea,7
-Gambia,Guinea-Bissau,1
+Gambia,Guinea Bissau,1
 Gambia,Morocco,1
 Gambia,Senegal,3
 Gambia,Sierra Leone,6
@@ -1634,11 +1634,11 @@ Guinea,Mauritania,1
 Guinea,Morocco,1
 Guinea,Senegal,2
 Guinea,Sierra Leone,1
-Guinea-Bissau,Gambia,2
-Guinea-Bissau,Morocco,1
-Guinea-Bissau,Portugal,1
-Guinea-Bissau,Senegal,3
-Guinea-Bissau,Sierra Leone,1
+Guinea Bissau,Gambia,2
+Guinea Bissau,Morocco,1
+Guinea Bissau,Portugal,1
+Guinea Bissau,Senegal,3
+Guinea Bissau,Sierra Leone,1
 Guyana,Barbados,1
 Guyana,Trinidad and Tobago,1
 Guyana,United States of America,1
@@ -2583,7 +2583,7 @@ Morocco,Gambia,1
 Morocco,Germany,14
 Morocco,Ghana,1
 Morocco,Guinea,1
-Morocco,Guinea-Bissau,2
+Morocco,Guinea Bissau,2
 Morocco,Ireland,1
 Morocco,Italy,12
 Morocco,Lebanon,1
@@ -3058,7 +3058,7 @@ Portugal,France,31
 Portugal,Germany,30
 Portugal,Ghana,1
 Portugal,Greece,2
-Portugal,Guinea-Bissau,1
+Portugal,Guinea Bissau,1
 Portugal,Hungary,1
 Portugal,Ireland,3
 Portugal,Italy,21
@@ -3364,7 +3364,7 @@ Senegal,Ivory Coast,2
 Senegal,France,3
 Senegal,Gambia,3
 Senegal,Guinea,2
-Senegal,Guinea-Bissau,3
+Senegal,Guinea Bissau,3
 Senegal,Italy,1
 Senegal,Liberia,1
 Senegal,Mali,5
@@ -3418,7 +3418,7 @@ Seychelles,United Arab Emirates,2
 Sierra Leone,Gambia,6
 Sierra Leone,Ghana,1
 Sierra Leone,Guinea,1
-Sierra Leone,Guinea-Bissau,1
+Sierra Leone,Guinea Bissau,1
 Sierra Leone,Liberia,2
 Sierra Leone,Morocco,1
 Sierra Leone,Nigeria,1
