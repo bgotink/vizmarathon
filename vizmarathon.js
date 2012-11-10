@@ -11,10 +11,17 @@ d3.json("./data/world-countries.json", function(collection) {
 	  .on("mouseover", map.countryOver)
 	  .on("mouseout", map.countryOut)
 	  .on("mouseclick", map.countryClick);
-	countryCodeMap = {};
-	collection.features.forEach(function(country){
-		countryCodeMap[country.id] = country.properties.name;
-	});
+
+  window.countryToItu = {};
+  window.ituToCountry = {};
+  
+  for (var idx in collection.features) {
+      var country = collection.features[idx];
+      
+      console.log(country.id, country);
+      window.ituToCountry[country.id] = country.properties.name;
+      window.countryToItu[country.properties.name] = country.id;
+  }
 });
 
 d3.csv("./data/flights/countriesToCountries.csv", function(countries){
