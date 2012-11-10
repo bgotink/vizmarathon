@@ -34,6 +34,10 @@ map.countryOut = function(country){
 }
 
 map.countryClick = function(country){
-	var cpath = d3.select("#" + country.id);
-	var rCountry = routes[ituToCountry[country.id]];
+	country = country;
+	map.states.selectAll("path").attr('fill', 'rgba(222,211,215,1)');
+	cpath = d3.select("#" + country.id);
+	rCountry = routes[ituToCountry[country.id]];
+	l = 100-Math.sqrt(2*rCountry.totalNbOfRoutes);
+	cpath.style("fill", "hsl(0, 85%," + l + "%)");
 }
