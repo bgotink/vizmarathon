@@ -4,6 +4,7 @@ var graph = {};
 //   .attr("width", map.w)
 //   .attr("height", map.h);
 
+graph.init = function() {
 
 var radius = 960 / 2;
  
@@ -80,3 +81,5 @@ d3.json("./data/flare2.json", function(json) {
 		.attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
 		.text(function(d) { return d.name; });
 });
+
+}

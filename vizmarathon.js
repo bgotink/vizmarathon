@@ -11,6 +11,8 @@ Object.defineProperty( Object.prototype, "clone", {value: clone, enumerable: fal
 
 if (isMap) {
     map.init();
+} else {
+    graph.init();
 }
 
 d3.json("./data/world-countries.json", function(collection) {
