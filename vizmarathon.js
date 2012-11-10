@@ -1,5 +1,5 @@
 d3.json("./data/world-countries.json", function(collection) {
-  countries = collection; //debug purposes
+  countries = collection; //debug purposes (nope, keep this!)
   map.states.selectAll("path")
       .data(collection.features)
     .enter().append("svg:path")
@@ -11,6 +11,10 @@ d3.json("./data/world-countries.json", function(collection) {
 	  .on("mouseover", map.countryOver)
 	  .on("mouseout", map.countryOut)
 	  .on("mouseclick", map.countryClick);
+	countryCodeMap = {};
+	collection.features.forEach(function(country){
+		countryCodeMap[country.id] = country.properties.name;
+	});
 });
 
 d3.csv("./data/flights/countriesToCountries.csv", function(countries){
@@ -19,6 +23,6 @@ d3.csv("./data/flights/countriesToCountries.csv", function(countries){
 		if(!graph[country['country departure']]){
 			graph[country['country departure']] = [];
 		}
-		graph[''+country['country departure']].push(country['country arrival']);
+		graph[country['country departure']].push(country['country arrival']);
 	});
 });

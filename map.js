@@ -25,14 +25,15 @@ map.circles = map.svg.append("svg:g")
 map.cells = map.svg.append("svg:g")
     .attr("id", "cells");
 	
-map.countryOver = function(path){
-	d3.select("#" + path.id).classed("countryOver", true);
+map.countryOver = function(country){
+	d3.select("#" + country.id).classed("countryOver", true);
 }
 
-map.countryOut = function(path){
-	d3.select("#" + path.id).classed("countryOver", false);
+map.countryOut = function(country){
+	d3.select("#" + country.id).classed("countryOver", false);
 }
 
-map.countryClick = function(path){
-	var country = d3.select("#" + path.id)
+map.countryClick = function(country){
+	var cpath = d3.select("#" + country.id);
+	cpath.
 }
