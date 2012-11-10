@@ -34,6 +34,13 @@ map.countryOut = function(country){
 }
 
 map.countryClick = function(country){
-	var cpath = d3.select("#" + country.id);
-
+	incCountry = country;
+	if(!country){
+		console.log("could not find airport for:" + country.properties.name);
+	}
+	map.states.selectAll("path").attr('fill', 'rgba(222,211,215,1)');
+	cpath = d3.select("#" + country.id);
+	rCountry = routes[ituToCountry[country.id]];
+	l = 100-Math.sqrt(2*rCountry.totalNbOfRoutes);
+	cpath.style("fill", "hsl(0, 85%," + l + "%)");
 }

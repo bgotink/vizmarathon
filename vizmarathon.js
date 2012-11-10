@@ -21,7 +21,7 @@ d3.json("./data/world-countries.json", function(collection) {
       .attr('stroke-width', 1)
 	  .on("mouseover", map.countryOver)
 	  .on("mouseout", map.countryOut)
-	  .on("mouseclick", map.countryClick);
+	  .on("click", map.countryClick);
 
   window.countryToItu = {};
   window.ituToCountry = {};
@@ -47,7 +47,7 @@ loadRouteData = function() {
     
         countries.forEach(function(country){
             var departure = country['country departure'].replace(/\s\(.*\)/,'');
-            
+			
     		if(!routes[departure]){
     			routes[departure] = {totalNbOfRoutes:0, neighbours:[]};
     		}
