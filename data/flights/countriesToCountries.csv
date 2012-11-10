@@ -49,7 +49,7 @@ American Samoa,United States of America,1
 Angola,Angola,38
 Angola,Brazil,2
 Angola,China,1
-Angola,Congo,8
+Angola,Democratic Republic of the Congo,8
 Angola,Cuba,1
 Angola,Egypt,1
 Angola,Ethiopia,1
@@ -364,7 +364,7 @@ Belgium,Burundi,6
 Belgium,Cameroon,11
 Belgium,Canada,8
 Belgium,China,2
-Belgium,Cote d'Ivoire,6
+Belgium,Ivory Coast,6
 Belgium,Croatia,2
 Belgium,Cyprus,1
 Belgium,Czech Republic,2
@@ -418,9 +418,9 @@ Belize,United States of America,9
 Benin,Burkina Faso,9
 Benin,Cameroon,8
 Benin,Chad,1
-Benin,Congo,3
-Benin,Congo,3
-Benin,Cote d'Ivoire,3
+Benin,Republic of the Congo,3
+Benin,Democratic Republic of the Congo,3
+Benin,Ivory Coast,3
 Benin,Equatorial Guinea,2
 Benin,France,1
 Benin,Gabon,5
@@ -532,7 +532,7 @@ Burkina Faso,Algeria,1
 Burkina Faso,Belgium,6
 Burkina Faso,Benin,9
 Burkina Faso,Burkina Faso,2
-Burkina Faso,Cote d'Ivoire,4
+Burkina Faso,Ivory Coast,4
 Burkina Faso,Ethiopia,1
 Burkina Faso,France,1
 Burkina Faso,Ghana,1
@@ -569,8 +569,8 @@ Cameroon,Benin,8
 Cameroon,Cameroon,15
 Cameroon,Central African Republic,8
 Cameroon,Chad,4
-Cameroon,Congo,1
-Cameroon,Congo,14
+Cameroon,Republic of the Congo,1
+Cameroon,Democratic Republic of the Congo,14
 Cameroon,Equatorial Guinea,4
 Cameroon,Ethiopia,2
 Cameroon,France,4
@@ -662,7 +662,7 @@ Cayman Islands,Jamaica,2
 Cayman Islands,United States of America,18
 Central African Republic,Cameroon,8
 Central African Republic,Chad,1
-Central African Republic,Congo,1
+Central African Republic,Democratic Republic of the Congo,1
 Central African Republic,Ethiopia,2
 Central African Republic,France,1
 Central African Republic,Kenya,1
@@ -758,8 +758,8 @@ China,United States of America,49
 China,Uzbekistan,2
 China,Vietnam,15
 Christmas Island,Australia,1
-Christmas Island,Cocos Islands,1
-Cocos Islands,Christmas Island,1
+Christmas Island,Cocos (Keeling) Islands,1
+Cocos (Keeling) Islands,Christmas Island,1
 Colombia,Argentina,2
 Colombia,Aruba,2
 Colombia,Bolivia,1
@@ -789,30 +789,30 @@ Comoros,Mayotte,3
 Comoros,Reunion,1
 Comoros,Tanzania,1
 Comoros,Yemen,1
-Congo,Benin,3
-Congo,Cameroon,1
-Congo,4
-Congo,Ethiopia,1
-Congo,France,1
-Congo,Gabon,2
-Congo,Morocco,1
-Congo,Angola,1
-Congo,Belgium,7
-Congo,Benin,2
-Congo,Cameroon,10
-Congo,Central African Republic,1
-Congo,4
-Congo,6
-Congo,Ethiopia,2
-Congo,France,2
-Congo,Gabon,4
-Congo,Kenya,4
-Congo,Malawi,1
-Congo,Morocco,2
-Congo,Rwanda,1
-Congo,South Africa,3
-Congo,Zambia,3
-Congo,Zimbabwe,1
+Republic of the Congo,Benin,3
+Republic of the Congo,Cameroon,1
+Republic of the Congo,Democratic Republic of the Congo,4
+Republic of the Congo,Ethiopia,1
+Republic of the Congo,France,1
+Republic of the Congo,Gabon,2
+Republic of the Congo,Morocco,1
+Democratic Republic of the Congo,Angola,1
+Democratic Republic of the Congo,Belgium,7
+Democratic Republic of the Congo,Benin,2
+Democratic Republic of the Congo,Cameroon,10
+Democratic Republic of the Congo,Central African Republic,1
+Democratic Republic of the Congo,Republic of the Congo,4
+Democratic Republic of the Congo,Democratic Republic of the Congo,6
+Democratic Republic of the Congo,Ethiopia,2
+Democratic Republic of the Congo,France,2
+Democratic Republic of the Congo,Gabon,4
+Democratic Republic of the Congo,Kenya,4
+Democratic Republic of the Congo,Malawi,1
+Democratic Republic of the Congo,Morocco,2
+Democratic Republic of the Congo,Rwanda,1
+Democratic Republic of the Congo,South Africa,3
+Democratic Republic of the Congo,Zambia,3
+Democratic Republic of the Congo,Zimbabwe,1
 Cook Islands,Australia,1
 Cook Islands,Cook Islands,14
 Cook Islands,French Polynesia,1
@@ -834,20 +834,20 @@ Costa Rica,Peru,3
 Costa Rica,Spain,1
 Costa Rica,United States of America,38
 Costa Rica,Venezuela,2
-Cote d'Ivoire,Belgium,6
-Cote d'Ivoire,Benin,3
-Cote d'Ivoire,Burkina Faso,4
-Cote d'Ivoire,France,2
-Cote d'Ivoire,Ghana,3
-Cote d'Ivoire,Guinea,3
-Cote d'Ivoire,Kenya,1
-Cote d'Ivoire,Liberia,5
-Cote d'Ivoire,Mali,4
-Cote d'Ivoire,Morocco,1
-Cote d'Ivoire,Nigeria,1
-Cote d'Ivoire,Senegal,2
-Cote d'Ivoire,Togo,7
-Cote d'Ivoire,Tunisia,1
+Ivory Coast,Belgium,6
+Ivory Coast,Benin,3
+Ivory Coast,Burkina Faso,4
+Ivory Coast,France,2
+Ivory Coast,Ghana,3
+Ivory Coast,Guinea,3
+Ivory Coast,Kenya,1
+Ivory Coast,Liberia,5
+Ivory Coast,Mali,4
+Ivory Coast,Morocco,1
+Ivory Coast,Nigeria,1
+Ivory Coast,Senegal,2
+Ivory Coast,Togo,7
+Ivory Coast,Tunisia,1
 Croatia,Austria,2
 Croatia,Belgium,2
 Croatia,Bosnia and Herzegovina,1
@@ -1168,8 +1168,8 @@ Ethiopia,Cameroon,2
 Ethiopia,Central African Republic,2
 Ethiopia,Chad,1
 Ethiopia,China,1
-Ethiopia,Congo,1
-Ethiopia,Congo,2
+Ethiopia,Republic of the Congo,1
+Ethiopia,Democratic Republic of the Congo,2
 Ethiopia,Djibouti,4
 Ethiopia,Egypt,2
 Ethiopia,Equatorial Guinea,2
@@ -1273,9 +1273,9 @@ France,Chad,1
 France,Chile,2
 France,China,7
 France,Colombia,1
-France,Congo,1
-France,Congo,2
-France,Cote d'Ivoire,2
+France,Republic of the Congo,1
+France,Democratic Republic of the Congo,2
+France,Ivory Coast,2
 France,Croatia,4
 France,Cuba,3
 France,Cyprus,1
@@ -1377,8 +1377,8 @@ French Polynesia,United States of America,6
 Gabon,Angola,1
 Gabon,Benin,5
 Gabon,Cameroon,4
-Gabon,Congo,2
-Gabon,Congo,4
+Gabon,Republic of the Congo,2
+Gabon,Democratic Republic of the Congo,4
 Gabon,Equatorial Guinea,2
 Gabon,Ethiopia,1
 Gabon,France,1
@@ -1522,7 +1522,7 @@ Germany,Uzbekistan,1
 Germany,Venezuela,1
 Germany,Vietnam,4
 Ghana,Burkina Faso,1
-Ghana,Cote d'Ivoire,3
+Ghana,Ivory Coast,3
 Ghana,Egypt,1
 Ghana,Ethiopia,1
 Ghana,Gambia,1
@@ -1625,7 +1625,7 @@ Guernsey,Isle of Man,1
 Guernsey,Jersey,3
 Guernsey,Switzerland,2
 Guernsey,United Kingdom,13
-Guinea,Cote d'Ivoire,3
+Guinea,Ivory Coast,3
 Guinea,France,1
 Guinea,Gambia,7
 Guinea,Liberia,1
@@ -2138,8 +2138,8 @@ Kenya,Cameroon,2
 Kenya,Central African Republic,1
 Kenya,Chad,1
 Kenya,Comoros,1
-Kenya,Congo,6
-Kenya,Cote d'Ivoire,1
+Kenya,Democratic Republic of the Congo,6
+Kenya,Ivory Coast,1
 Kenya,Djibouti,3
 Kenya,Egypt,1
 Kenya,Ethiopia,8
@@ -2285,7 +2285,7 @@ Lebanon,United Kingdom,3
 Lebanon,Yemen,1
 Lesotho,South Africa,1
 Liberia,Belgium,5
-Liberia,Cote d'Ivoire,6
+Liberia,Ivory Coast,6
 Liberia,Ghana,7
 Liberia,Guinea,1
 Liberia,Mali,1
@@ -2361,7 +2361,7 @@ Madagascar,Mayotte,6
 Madagascar,Reunion,9
 Madagascar,South Africa,3
 Madagascar,Thailand,2
-Malawi,Congo,1
+Malawi,Democratic Republic of the Congo,1
 Malawi,Ethiopia,1
 Malawi,Kenya,3
 Malawi,Malawi,2
@@ -2433,7 +2433,7 @@ Mali,Algeria,1
 Mali,Belgium,4
 Mali,Benin,2
 Mali,Burkina Faso,3
-Mali,Cote d'Ivoire,4
+Mali,Ivory Coast,4
 Mali,France,3
 Mali,Ghana,5
 Mali,Guinea,2
@@ -2571,9 +2571,9 @@ Morocco,Benin,1
 Morocco,Burkina Faso,1
 Morocco,Cameroon,2
 Morocco,Canada,1
-Morocco,Congo,1
-Morocco,Congo,2
-Morocco,Cote d'Ivoire,1
+Morocco,Republic of the Congo,1
+Morocco,Democratic Republic of the Congo,2
+Morocco,Ivory Coast,1
 Morocco,Denmark,2
 Morocco,Egypt,2
 Morocco,Equatorial Guinea,1
@@ -2790,7 +2790,7 @@ Niger,Nigeria,1
 Nigeria,Angola,1
 Nigeria,Benin,3
 Nigeria,Cameroon,2
-Nigeria,Cote d'Ivoire,1
+Nigeria,Ivory Coast,1
 Nigeria,Egypt,3
 Nigeria,Equatorial Guinea,1
 Nigeria,Ethiopia,2
@@ -3274,7 +3274,7 @@ Russia,Uzbekistan,79
 Russia,Vietnam,7
 Rwanda,Belgium,1
 Rwanda,Burundi,5
-Rwanda,Congo,1
+Rwanda,Democratic Republic of the Congo,1
 Rwanda,Ethiopia,2
 Rwanda,Kenya,11
 Rwanda,Nigeria,1
@@ -3360,7 +3360,7 @@ Senegal,Belgium,1
 Senegal,Benin,1
 Senegal,Burkina Faso,1
 Senegal,Cape Verde,2
-Senegal,Cote d'Ivoire,2
+Senegal,Ivory Coast,2
 Senegal,France,3
 Senegal,Gambia,3
 Senegal,Guinea,2
@@ -3504,7 +3504,7 @@ South Africa,Argentina,2
 South Africa,Australia,4
 South Africa,Botswana,5
 South Africa,Brazil,1
-South Africa,Congo,3
+South Africa,Democratic Republic of the Congo,3
 South Africa,Egypt,2
 South Africa,Ethiopia,3
 South Africa,France,3
@@ -3960,7 +3960,7 @@ Thailand,Vietnam,12
 Togo,Belgium,6
 Togo,Benin,2
 Togo,Burkina Faso,2
-Togo,Cote d'Ivoire,1
+Togo,Ivory Coast,1
 Togo,Ethiopia,2
 Togo,France,1
 Togo,Gabon,1
@@ -3990,7 +3990,7 @@ Trinidad and Tobago,Venezuela,2
 Tunisia,Algeria,2
 Tunisia,Austria,1
 Tunisia,Belgium,2
-Tunisia,Cote d'Ivoire,1
+Tunisia,Ivory Coast,1
 Tunisia,Egypt,2
 Tunisia,France,32
 Tunisia,Germany,17
@@ -4577,7 +4577,7 @@ Yemen,United Arab Emirates,11
 Yemen,Yemen,43
 Zambia,Angola,1
 Zambia,Botswana,1
-Zambia,Congo,1
+Zambia,Democratic Republic of the Congo,1
 Zambia,Ethiopia,1
 Zambia,Kenya,5
 Zambia,Malawi,4
@@ -4587,7 +4587,7 @@ Zambia,United Kingdom,1
 Zambia,Zambia,9
 Zambia,Zimbabwe,5
 Zimbabwe,Botswana,1
-Zimbabwe,Congo,1
+Zimbabwe,Democratic Republic of the Congo,1
 Zimbabwe,Ethiopia,1
 Zimbabwe,Kenya,2
 Zimbabwe,Malawi,2
