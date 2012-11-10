@@ -1,8 +1,10 @@
 var map = {};
 
+
 map.w = 1280;
 map.h = 800;
 
+map.init = function() {
 map.projection = d3
             .geo
             .mercator()
@@ -24,6 +26,7 @@ map.circles = map.svg.append("svg:g")
 
 map.cells = map.svg.append("svg:g")
     .attr("id", "cells");
+}
 	
 map.countryOver = function(country){
 	d3.select("#" + country.id).classed("countryOver", true);

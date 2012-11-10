@@ -9,8 +9,16 @@ var clone = function() {
 
 Object.defineProperty( Object.prototype, "clone", {value: clone, enumerable: false});
 
+if (isMap) {
+    map.init();
+} else {
+    graph.init();
+}
+
 d3.json("./data/world-countries.json", function(collection) {
 //  countries = collection; //debug purposes (nope, keep this!)
+
+  if (isMap) {
   map.states.selectAll("path")
       .data(collection.features)
     .enter().append("svg:path")
@@ -22,6 +30,7 @@ d3.json("./data/world-countries.json", function(collection) {
 	  .on("mouseover", map.countryOver)
 	  .on("mouseout", map.countryOut)
 	  .on("click", map.countryClick);
+  }
 
   window.countryToItu = {};
   window.ituToCountry = {};
