@@ -16,11 +16,6 @@ Object.defineProperty(Array.prototype, "remove", {value: function(from, to) {
   return this.push.apply(this, rest);
 }, enumerable: false});
 
-if (!Array.prototype.indexOf)
-{
-    alert("This browser doesn't support indexOf, please die a horrible death.");
-}
-
 Object.defineProperty( Array.prototype, "contains", {value: function(elem) {
     return this.indexOf(elem) !== -1;
 }, enumerable: false });

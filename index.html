@@ -6,17 +6,21 @@
 	<link rel="stylesheet" type="text/css" href="vizmarathon.css" />
 	<link rel="stylesheet" type="text/css" href="buttons.css" />
 	<script src="http://mbostock.github.com/d3/d3.v2.js"></script>
-	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-	<!--<link rel="stylesheet" type="text/css" href="https://www.webkit.org/blog/wp-content/themes/webkit/style.css">-->
+
     <script type="text/javascript">
 		var isMap = document.location.hash != '#tree';
 		var isTree = !isMap;
     </script>
-    
   </head>
   <body onload="buttonInit()">
 		<script src="styling.js"></script>
-		<h1>Flight route connectivity of countries</h1>
+		<script type="text/javascript">
+        if (top === self) {
+            var title = document.createElement('h1');
+            title.innerText = 'World Connectivity';
+            document.body.insertBefore(title, document.body.firstChild);
+        }
+        </script>
 		<!--<div class="horizontal">-->
 			<button id="mapButton" class="button left" onclick="buttonMap()"><span class="label">Map</span></a>
 			<button id="graphButton" class="button right" onclick="buttonGraph()"><span class="label">Graph</span></button>
@@ -31,10 +35,7 @@
 		<script src="map.js"></script>
         <script src="graph.js"></script>
   		<script src="vizmarathon.js"></script>
-		<script src="story.js"></script>
-
-		
-		
+		<script src="story.js"></script>		
   </body>
 </html>
 

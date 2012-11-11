@@ -208,4 +208,6 @@ dialog.welcome = function(){
 }
 dialog.welcome();
 }
-dialog.init();
+if (isMap) {
+    dialog.init();
+}
