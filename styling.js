@@ -24,12 +24,10 @@ function buttonMap(){
 	setVisible("internationalButton");
 }
 function buttonDomestic(){
-	//alert("TODO fill in this function");
 	map.showAllInternal();
 }
 function buttonInternational(){
-	//map.showTotals();
-	alert("uncomment the showTotals line");
+	map.showTotals();
 }
 function setSelected(id){
 	var el = document.getElementById(id);
