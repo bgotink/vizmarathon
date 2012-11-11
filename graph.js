@@ -9,7 +9,6 @@ graph.TreeNode = function (country) {
     this.name = tmp.name;
     this.children = tmp.children.filter(
         function(c) {
-            console.log(c.name, tmp.name);
             return c.name !== tmp.name;
         }
     );
@@ -97,6 +96,8 @@ graph.updateEdges = function(edges) {
     for (var idx in edgesObj) {
         if (! graph.storedEdges[idx]) {
             newEdges[idx] = edgesObj[idx];
+        } else {
+            graph.storedEdges[idx] = edgesObj[idx];
         }
     }
     
@@ -118,7 +119,7 @@ graph.show =  function(clicked) {
         diagonal = graph.diagonal,
         root = graph.data;
     
-	var nodes = tree.nodes(root).reverse(),
+	var nodes = tree.nodes(root)//.reverse(),
         edges = tree.links(nodes),
         links = edges.filter(function(e) {
             return e.source !== root;
