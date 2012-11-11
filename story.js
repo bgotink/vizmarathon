@@ -14,7 +14,6 @@ dialog.translatingDuration = 1000;
 dialog.init = function(){
 
 dialog.exitClick = function(){
-	//console.log("clickcatcher click");
 	dialog.g.transition().duration(dialog.exitDuration).ease("quad", "out").style("opacity",0).remove();
 	dialog.clickCatcher.transition().duration(dialog.exitDuration).ease("quad", "out").style("opacity",0).remove();
 }
@@ -42,6 +41,7 @@ dialog.story1 = function(){
 			dialog.rect.on("click", null);
 			dialog.rect.on("click", dialog.story2);
 			dialog.show();
+            dialog.g.selectAll("text").on("click", null).on("click", dialog.story2);
 	});
 }
 
@@ -61,6 +61,7 @@ dialog.story2 = function(){
 			dialog.rect.on("click", null);
 			dialog.rect.on("click", dialog.story3);
 			dialog.show();
+            dialog.g.selectAll("text").on("click", null).on("click", dialog.story3);
 	});
 }
 
@@ -80,6 +81,7 @@ dialog.story3 = function(){
 			dialog.rect.on("click", null);
 			dialog.rect.on("click", dialog.story4);
 			dialog.show();
+            dialog.g.selectAll("text").on("click", null).on("click", dialog.story4);
 	});
 }
 
@@ -99,6 +101,7 @@ dialog.story4 = function(){
 			dialog.rect.on("click", null);
 			dialog.rect.on("click", dialog.story5);
 			dialog.show();
+            dialog.g.selectAll("text").on("click", null).on("click", dialog.story5);
 	});
 }
 
@@ -118,6 +121,7 @@ dialog.story5 = function(){
 			dialog.rect.on("click", null);
 			dialog.rect.on("click", dialog.exitClick);
 			dialog.show();
+            dialog.g.selectAll("text").on("click", null).on("click", dialog.exitClick);
 	});
 }
 
@@ -182,6 +186,9 @@ dialog.textl6 = dialog.g.append("svg:text")
 				.attr("class", "dialogtext dialoghint")
 				.attr("x",10)
 				.attr("y",dialog.topmargin+dialog.headerheight+5*dialog.lineheight);
+
+dialog.g.selectAll("text").on("click", dialog.story1);
+                
 dialog.show = function(){
 	dialog.g.style("display", null);
 }
