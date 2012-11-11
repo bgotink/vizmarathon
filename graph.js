@@ -48,7 +48,7 @@ graph.init = function() {
     graph.duration = 1000;
     graph.idgen = 0;
     
-    var radius = graph.radius = 960 / 2
+    var radius = viz.radius;
  
     graph.layout = d3.layout.tree()
         .size([360, radius- 120])
@@ -59,23 +59,86 @@ graph.init = function() {
     graph.diagonal = d3.svg.diagonal.radial()
          .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
-    graph.svg = d3.select("body").append("svg:svg")
-        .attr("width", radius * 2)
-        .attr("height", radius * 2)
-	    .append("g")
-	    .attr("transform", "translate(" + radius + "," + radius + ")");
+    graph.svg = viz.svg;
     
-    graph.edges = graph.svg.append("svg:g");
-    graph.nodes = graph.svg.append("svg:g");
+    graph.edges = viz.g1;
+    graph.nodes = viz.g2;
     
     graph.linkCount = 0;
     
-    graph.data = new graph.TreeNode('Myanmar');
     graph.storedEdges = {};
+}
+
+graph.load = function(initial) {
+    graph.svg
+	        .attr("transform", "translate(" + viz.center.x + "," + viz.center.y + ")");
+    if (initial) {
+        graph.data = new graph.TreeNode('Belgium');
+        graph.show(graph.data);
+        return;
+    }
     
-    graph.timeoutDelay = 1000;
+    graph.data = new graph.TreeNode(
+        map.selectedcountry
+        ? map.selectedcountry.properties.name
+        : "BEL"
+    );
     
-    graph.show(graph.data);
+    var setLocation = function(node) {
+        var loc = map.getCachedCentroid(node.name).clone();
+        
+        loc.x -= viz.center.x;
+        loc.y -= viz.center.y;
+        
+        node.x = node.x0 = node.mapX = graph.toPolarX(loc);
+        node.y = node.y0 = node.mapY = graph.toPolarY(loc);
+        
+        if (node.children) {
+            node.children.forEach(setLocation);
+        }
+    }
+    setLocation(graph.data);
+    
+    console.log(graph.data);
+    
+    graph.show(graph.data, true);
+}
+
+graph.unload = function(callback) {
+    graph.data.children.forEach(
+        function(child) {
+            if (child.children) {
+                delete child.children;
+            }
+        }
+    );
+    
+    graph.show();
+    
+    var t0 = graph.svg.transition().duration(graph.duration);
+    
+    var node = t0.selectAll("g.node");
+    var line = t0.selectAll("line");
+    
+    node.attr("transform", function(node) {
+            return "rotate(" + (node.mapX - 90) + ")translate(" + node.mapY + ")";
+        })
+        .remove();
+        
+    node.select("circle")
+        .attr("r", 1e-6);
+    
+    node.select("text")
+        .attr('fill-opacity', 1e-6)
+        .attr('stroke-opacity', 1e-6);
+    
+    line.attr("stroke-opacity", 1e-6).remove();
+    
+    t0.each("end", function() {
+        graph.svg
+	        .attr("transform", "translate(0,0)");
+        callback();
+    });
 }
     
 graph.fromPolarX = function(d) {
@@ -84,6 +147,14 @@ graph.fromPolarX = function(d) {
 
 graph.fromPolarY = function(d) {
     return d.y * Math.sin((d.x - 90) * Math.PI / 180);
+}
+
+graph.toPolarX = function(d) {
+    return Math.atan2(d.y, d.x) * 180 / Math.PI + 90;
+}
+
+graph.toPolarY = function(d) {
+    return Math.sqrt(d.x * d.x + d.y * d.y);
 }
 
 graph.updateEdges = function(edges) {
@@ -125,7 +196,7 @@ graph.shortenName = function(name) {
     return matches.join('');    
 }
 
-graph.show =  function(clicked) {    
+graph.show =  function(clicked, nodeLocationsSet) {    
     var tree = graph.layout,
         diagonal = graph.diagonal,
         root = graph.data;
@@ -142,7 +213,7 @@ graph.show =  function(clicked) {
             return e.source === root;
         });
     
-    if (typeof clicked === 'undefined') {
+    if (!clicked) {
         clicked = root;
     }
     
@@ -151,8 +222,12 @@ graph.show =  function(clicked) {
         y: ~~clicked.y0
     };
     
-    var getParent = function(d) {
-        return (typeof d.parent === 'undefined') ? clicked : d.parent;
+    var oldTargetLocation = function(d) {
+        if (nodeLocationsSet) return {
+            x: d.mapX,
+            y: d.mapY
+        };
+        return oldSourceLocation;
     }
     
     var node = graph.nodes.selectAll("g.node")
@@ -179,7 +254,7 @@ graph.show =  function(clicked) {
         };
     };
         
-    line.enter()
+    var lineEnter = line.enter()
 	    .append("line")
         .attr("x1", function(d){
 		    return graph.fromPolarX(oldSourceLocation);
@@ -188,15 +263,19 @@ graph.show =  function(clicked) {
 	        return graph.fromPolarY(oldSourceLocation);
 	    })
         .attr("x2", function(d) { 
-            return graph.fromPolarX(oldSourceLocation); 
+            return graph.fromPolarX(oldTargetLocation(d.target)); 
         })
         .attr("y2", function(d) { 
-            return graph.fromPolarY(oldSourceLocation);
+            return graph.fromPolarY(oldTargetLocation(d.target));
         })
 	    .attr("stroke-width", 2)
         .attr("class", "line")
         .on("mouseover", graph.mouseOver)
         .on("mouseout", graph.mouseOut);
+        
+    if (nodeLocationsSet) {
+        lineEnter.attr("stroke-opacity", 1e-6);
+    }
     
     link.enter()
         .append("path")
@@ -211,26 +290,36 @@ graph.show =  function(clicked) {
 	var nodeEnter = node
     	.enter().append("g")
     	.attr("class", "node")
-    	.attr("transform", function(d) { return "rotate(" + (oldSourceLocation.x - 90) +")translate(" + oldSourceLocation.y + ")"; })
-        .on("click", function(d) { window.graph.toggle(d); })
+    	.attr("transform", function(d) {
+            var t = oldTargetLocation(d);
+            return "rotate(" + (t.x - 90) +")translate(" + t.y + ")"; 
+        })
+        .on("click", graph.toggle)
         .on("mouseover", graph.mouseOver)
         .on("mouseout", graph.mouseOut);
  
     nodeEnter.append("circle")
-        .attr("r", 2.5);
+        .attr("r", (nodeLocationsSet ? 1e-6 : 2.5));
  
     nodeEnter.append("text")
         .attr("dy", ".31em")
     	.text(function(d) { return "    " + graph.shortenName(d.name) + "    "; })
         .attr('fill-opacity', 1e-6)
+        .attr('stroke-opacity', 1e-6)
         .attr("class", "graph");
     
     var nodeUpdate = node.transition()
         .duration(graph.duration).ease('quad', 'out')
         .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"});
         
+    if (nodeLocationsSet) {
+        node.transition().duration(graph.duration / 10).ease('quad', 'out')
+            .select("circle").attr("r", 2.5);
+    }
+        
     nodeUpdate.select("text")
         .style("fill-opacity", 1)
+        .style("stroke-opacity", 1)
     	.attr("transform", 
             function(d) {
                 return (d.x < 180)
@@ -257,7 +346,8 @@ graph.show =  function(clicked) {
         })
         .attr("y2", function(d) {
             return graph.fromPolarY(d.target);
-        });
+        })
+        .attr("stroke-opacity", 1);
         
     var nodeExit = node.exit().transition()
         .duration(graph.duration).ease('quad')

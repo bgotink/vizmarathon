@@ -1,10 +1,12 @@
 var map = {};
 
-map.w = 1280;
-map.h = 800;
 map.duration = 1500;
 
 map.init = function() {
+
+map.w = viz.w;
+map.h = viz.h;
+    
 map.projection = d3
             .geo
             .mercator()
@@ -14,32 +16,122 @@ map.projection = d3
 map.path = d3.geo.path()
     .projection(map.projection);
 
-map.svg = d3.select("body").insert("svg:svg")
-    .attr("width", map.w)
-    .attr("height", map.h)
-	.attr("class", "map");
+map.svg = viz.svg;
 
-map.states = map.svg.append("svg:g")
-    .attr("id", "states");
-	
-map.lltextg = map.svg.append("svg:g")
-				.attr("id","lltextg")
-				.attr("transform", "translate(" + 10 + "," + (map.h - 400) + ")");
-map.lltexthead = map.lltextg.append("svg:text")
-				.attr("id", "lltexthead")
-				.text("Click on a country");
-map.lltextl1 = map.lltextg.append("svg:text")
-					.attr("id", "lltext")
-					.attr("y", 20)
-					.text("to view connected countries.");
-map.lltextl2 = map.lltextg.append("svg:text")
-					.attr("id", "lltext")
-					.attr("y", 35)
-					.text("");
-map.lltextl3 = map.lltextg.append("svg:text")
-					.attr("id", "lltext")
-					.attr("y", 50)
-					.text("");
+map.states = viz.g1;
+map.lltextg = viz.g2;
+
+map.cachedCentroids = {};
+
+map.load = function(initial) {
+    map.lltexthead = map.lltextg.append("svg:text")
+		.attr("id", "lltexthead")
+		.text("Click on a country")
+        .classed("invisible", true);
+    map.lltextl1 = map.lltextg.append("svg:text")
+		.attr("id", "lltext")
+		.attr("y", 20)
+		.text("to view connected countries.")
+        .classed("invisible", true);
+    map.lltextl2 = map.lltextg.append("svg:text")
+		.attr("id", "lltext")
+		.attr("y", 35)
+		.text("")
+        .classed("invisible", true);
+    map.lltextl3 = map.lltextg.append("svg:text")
+		.attr("id", "lltext")
+        .attr("y", 50)
+		.text("")
+        .classed("invisible", true);
+            
+    if (initial) {
+        map.lltextg.attr("transform", "translate(10," + (map.h - 400) + ")");
+        viz._svg.classed("map", true);
+    
+        map.states.selectAll("path")
+            .data(map.data)
+          .enter().append("svg:path")
+            .attr("id", function(d){return d.id;})
+            .attr("d", map.path)
+          	.classed("country", true)
+          	.on("mouseover", map.countryOver)
+          	.on("mouseout", map.countryOut)
+          	.on("click", map.countryClick)
+          	.on("mousemove", map.updateTooltip);
+        
+        map.lltextg.selectAll("text").classed("invisible", false);
+        
+        map.initCentroidCache();
+    } else {
+        viz._svg.style("background-color", "#fff");
+        viz._svg.transition().duration(map.duration).ease('quad', 'out')
+            .style("background-color", "hsl(206,58%,95%)")
+            .each("end", function() {
+                viz._svg.classed("map", true);
+                viz._svg.style("background-color", null);
+            });
+            
+
+        map.lltextg
+            .transition().duration(map.duration).ease('quad','out')
+            .attr("transform", "translate(10," + (map.h - 400) + ")");
+            
+        map.lltextg.selectAll("text")
+            .attr("fill", "#fff")
+            .attr("stroke", "#fff")
+            .classed("invisible", false);
+        
+        map.lltextg.selectAll("text")
+            .transition().duration(map.duration).ease('quad', 'out')
+            .attr("fill", "#000")
+            .attr("stroke", "#000")
+            .each("end", function() {
+                d3.select(this)
+                    .attr("stroke", null)
+                    .attr("fill", null);
+            });
+
+        map.enterCountries();
+    }
+}
+
+map.unload = function(callback) {
+    var t0 = viz._svg.transition()
+        .duration(map.duration).ease('quad', 'out');
+    
+    t0.style("background-color", "#FFF")
+        .each("end", function(e) {
+            viz._svg.classed("map", false);
+            viz._svg.style("background-color", null);
+        });
+        
+    var svg = t0.select("g");
+    
+    t0.select("#two")
+        .transition().duration(map.duration).ease('quad', 'out')
+        .attr("transform", "translate(0,0)")
+        .each("end", function() {
+            d3.select(this).attr("transform", null);
+        });
+    
+    svg.selectAll("#two > text")
+        .transition().duration(map.duration).ease('quad', 'out')
+        .attr("fill", "#fff")
+        .attr("stroke", "#fff")
+        .remove();
+    
+    svg.selectAll("#one > path").transition()
+        .duration(map.duration).ease('quad', 'out')
+        .attr("transform", function(c) {
+            var t = map.getCentroid(c.id);
+            return "translate("+t.x+","+t.y+")scale(2e-6)";
+        })
+        .remove();
+        
+    if (callback) {
+        t0.transition().each('end', callback);
+    }
+}
 
 map.selectedcountry;
 	
@@ -169,18 +261,33 @@ map.countryClick = function(country){
 	d3.select("#"+country.id).transition().duration(map.duration).ease('quad', 'out').style("fill", "hsl(247, 85%, " + selfcontr + "%)");	
 }
 
-map.fadeCountry = function(itu){
-	var sel = d3.select("#"+itu);
-	t = map.getCentroid(sel);
-	sel.transition().duration(map.duration).ease('quad', 'out').attr("transform", "translate("+t[0]+","+t[1]+")scale(2e-6)");
-	return t;
-}
-
 map.enterCountries = function(){
-	d3.selectAll("path").transition().duration(map.duration).ease('quad', 'out').attr("transform", "translate(0,0)scale(1)");
+    var states = map.states.selectAll("path")
+            .data(map.data);
+    
+    states.enter().append("svg:path")
+        .attr("id", function(d){return d.id;})
+        .attr("d", map.path)
+        .classed("country", true)
+        .on("mouseover", map.countryOver)
+        .on("mouseout", map.countryOut)
+        .on("click", map.countryClick)
+        .on("mousemove", map.updateTooltip)
+        .attr("transform", function (c) {
+            var t = map.getCentroid(c.id);
+            return "translate(" + t.x + "," + t.y + ')scale(2e-6)';
+        });
+    
+	states.transition()
+        .duration(map.duration).ease('quad', 'out')
+        .attr("transform", "translate(0,0)scale(1)");
 }
 
 map.getCentroidOfItu = function(itu){
+    if (!itu) {
+        return { x: 0, y: 0 };
+    }
+    
 	var sel = d3.select("#"+itu);
 	return map.getCentroid(sel);
 }
@@ -233,12 +340,38 @@ map.showTotals = function(){
 }
 
 map.getCentroid = function(selection) {
+    if (ituToCountry[selection]) {
+        selection = d3.select("#" + selection);
+    }
+    
     // get the DOM element from a D3 selection
     // you could also use "this" inside .each()
     var element = selection.node(),
         // use the native SVG interface to get the bounding box
         bbox = element.getBBox();
     // return the center of the bounding box
-    return [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
+    
+    return {
+            x: bbox.x + bbox.width/2,
+            y: bbox.y + bbox.height/2
+        };
+}
+
+map.getCachedCentroid = function(id) {
+    if (countryToItu[id]) {
+        id = countryToItu[id];
+    }
+    return map.cachedCentroids[id]
+        ? map.cachedCentroids[id]
+        : {
+            x: 0,
+            y: 0
+        };
+}
+
+map.initCentroidCache = function() {
+    for (var idx in ituToCountry) {
+        map.cachedCentroids[idx] = map.getCentroid(idx);
+    }
 }
 }

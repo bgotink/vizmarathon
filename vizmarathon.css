@@ -25,6 +25,7 @@ path.countryOver{
 
 text.graph {
     white-space: pre;
+    cursor: default;
 }
 
 g.node {
@@ -46,8 +47,9 @@ path.graphhighlight {
     fill: none;
 }
 
-.invisible {
-  display: none;
+text.invisible {
+    stroke: #fff;
+    fill: #fff;
 }
 
 text#tooltip{

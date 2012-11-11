@@ -25,25 +25,35 @@ Object.defineProperty( Array.prototype, "contains", {value: function(elem) {
     return this.indexOf(elem) !== -1;
 }, enumerable: false });
 
-if (isMap) {
-    map.init();
+// FIXME fix above for non-Chrome browsers !!
+
+var viz = {};
+
+viz.w = 1280;
+viz.h = 800;
+viz.radius = Math.min(viz.w, viz.h) / 2;
+
+viz.center = {
+    x: viz.w / 2,
+    y: viz.h / 2
 }
 
-d3.json("./data/world-countries.json", function(collection) {
-//  countries = collection; //debug purposes
+viz.svg = d3.select("body").insert("svg:svg")
+        .attr("width", viz.w)
+        .attr("height", viz.h)
+        .append("g");
+viz._svg = d3.select("svg");
 
-  if (isMap) {
-  map.states.selectAll("path")
-      .data(collection.features)
-    .enter().append("svg:path")
-	  .attr("id", function(d){return d.id;})
-      .attr("d", map.path)
-	  .classed("country", true)
-	  .on("mouseover", map.countryOver)
-	  .on("mouseout", map.countryOut)
-	  .on("click", map.countryClick)
-	  .on("mousemove", map.updateTooltip);
-  }
+viz.g1 = viz.svg.append('g')
+    .attr("id", "one");
+viz.g2 = viz.svg.append('g')
+    .attr("id", "two");
+
+map.init();
+graph.init();
+
+d3.json("./data/world-countries.json", function(collection) {
+  map.data = collection.features;
   
   window.countryToItu = {};
   window.ituToCountry = {};
@@ -58,10 +68,6 @@ d3.json("./data/world-countries.json", function(collection) {
   
   loadRouteData();
 });
-
-if (typeof window.graph == 'undefined') {
-    window.graph = {};
-}
 
 loadRouteData = function() {
     d3.csv("./data/flights/countriesToCountries.csv", function(countries){
@@ -98,7 +104,9 @@ loadRouteData = function() {
         }
         
         if (isTree) {
-            graph.init();
+            graph.load(true);
+        } else {
+            map.load(true);
         }
     });
 }
