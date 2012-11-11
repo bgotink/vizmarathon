@@ -8,12 +8,18 @@ path.countryOver{
 	fill: hsl(206,10%,75%);
 }
 
-text#tooltip{
-	font-family: Verdana;
-	font-size: 14px;
-	fill: #020202;
+#gtooltip{
+	
+}
+
+#lltexthead{
+	font-size: 20px;
 }
 
 svg {
 	background-color: hsl(206,58%,95%);
+	font-family: Helvetica;
+	font-weight: bold;
+	font-size: 14px;
+	fill: #020202;
 }

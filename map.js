@@ -20,37 +20,84 @@ map.svg = d3.select("body").insert("svg:svg")
 map.states = map.svg.append("svg:g")
     .attr("id", "states");
 	
+map.lltextg = map.svg.append("svg:g")
+				.attr("id","lltextg")
+				.attr("transform", "translate(" + 10 + "," + (map.h - 400) + ")");
+map.lltexthead = map.lltextg.append("svg:text")
+				.attr("id", "lltexthead")
+				.text("Click on a country");
+map.lltextl1 = map.lltextg.append("svg:text")
+					.attr("id", "lltext")
+					.attr("y", 20)
+					.text("to view connected countries.");
+map.lltextl2 = map.lltextg.append("svg:text")
+					.attr("id", "lltext")
+					.attr("y", 35)
+					.text("");
+map.lltextl3 = map.lltextg.append("svg:text")
+					.attr("id", "lltext")
+					.attr("y", 50)
+					.text("");
+
+map.selectedcountry;
+	
 map.addTooltip = function(country){
 		var x = event.pageX,
 		y = event.pageY;
 		map.svg.append("svg:g")
 				.attr("id", "gtooltip")
+				.attr("class", "tooltip")
 				.attr("transform", "translate(" + x +", " + y + ")");
 		d3.select("#gtooltip").append("svg:rect")
 					.attr("id", "tooltiprect")
 					.attr("x", 0)
 					.attr("y", 0)
-					.attr("width", 200)
+					.attr("width", 260)
 					.attr("height", 100)
 					.style("stroke", "hsl(0,50%,0%)")
 					.style("fill", "hsl(50,50%,80%)");
 		d3.select("#gtooltip").append("svg:text")
-					.attr("id", "tooltiptext")
-					.attr("class", "tooltip")
+					.attr("id", "tooltiphead")
 					.attr("x", 10)
 					.attr("y", 20)
 					.text(country.properties.name)
-		d3.select("#gtooltip").append("svg:text")
-					.attr("class", "ttdesc")
+		
+		if(map.selectedcountry){
+			d3.select("#gtooltip").append("svg:text")
+					.attr("id", "tooltipdesctocountry")
+					.attr("class", "tooltipdesc")
 					.attr("x", 10)
 					.attr("y",35)
-					.text("Total number of routes:" + (window.routes[country.properties.name]?window.routes[country.properties.name].totalNbOfRoutes:0));
-		
+					.text("Routes from " + window.countryToItu[map.selectedcountry.properties.name] +
+						" to " + window.countryToItu[country.properties.name] +
+						":" + map.routesBetween(map.selectedcountry.properties.name,country.properties.name));
+			
+			if(map.selectedcountry.properties.name !== country.properties.name)
+			d3.select("#gtooltip").append("svg:text")
+					.attr("id", "tooltipdescreturn")
+					.attr("class", "tooltipdesc")
+					.attr("x", 10)
+					.attr("y",50)
+					.text("Routes from " + window.countryToItu[country.properties.name] +
+						" to " + window.countryToItu[map.selectedcountry.properties.name] +
+						":" + map.routesBetween(country.properties.name, map.selectedcountry.properties.name));
+		}
+}
+
+map.routesBetween = function(from, dest){//from, dest = name strings
+	var r = window.routes[from];
+	var c = r?r.neighbours.filter(function(e){return e.name === dest;})[0]:undefined;
+	var n = c?c.nbOfRoutes:0;
+	return n?n:0;
 }
 
 map.updateTooltip = function(country){
 	var x = event.pageX,
 		y = event.pageY;
+	if(x > map.w-260)
+		x-=260;
+	if(y > map.h-100)
+		y-=100;
 	d3.select("#gtooltip")
 		.attr("transform", "translate(" + x +", " + y + ")");
 }
@@ -72,28 +119,37 @@ map.countryOut = function(country){
 }
 
 map.countryClick = function(country){
-	map.states.selectAll("path").style('fill', null);
+	map.selectedcountry = country;
+	map.hideTooltip();
+	map.addTooltip(country);
+	map.states.selectAll("path").transition().duration(1500).ease(Math.sqrt).style('fill', null);
+	map.lltexthead.text(country.properties.name);
+	map.lltextl1.text("Country code:" + countryToItu[country.properties.name]);
+	map.lltextl2.text("Total # of routes: " + routes[country.properties.name].totalNbOfRoutes); 
 	var cpath = d3.select("#" + country.id);
-	rCountry = routes[ituToCountry[country.id]];
+	var rCountry = routes[ituToCountry[country.id]];
 	if(!rCountry){
-		console.log("could not find airport data for:" + country.properties.name);
+		console.log("could not find route data for:" + country.properties.name);
 		return;
 	}
 	cpath.style("fill", "hsl(0, 85%,50%)");
-	maxRoutes = 0;
+	var maxRoutes = 0;
 	rCountry.neighbours.map(function(elem){if(elem.nbOfRoutes > maxRoutes) maxRoutes = elem.nbOfRoutes;});
-	n = maxRoutes;
-	d3.select("#"+country.id).style("fill", "hsl(247, 85%, " + 90 + "%)");
+	var n = maxRoutes;
+	var selfcontr=80;
+	d3.select("#"+country.id).style("fill", "hsl(247, 85%, 100%)");
 	rCountry.neighbours.forEach(function(neighbour){
 		gneighbour = neighbour;
-		itu = countryToItu[neighbour.name];
-		contribution = 90 - (40 * (neighbour.nbOfRoutes / n));
-		console.log(country.properties.name + "===" + neighbour.name + "\tnbofroutes:" + neighbour.nbOfRoutes + "\tc:" + contribution);
+		var itu = countryToItu[neighbour.name];
+		contribution = 97 - (50 * (neighbour.nbOfRoutes / n));
+		//console.log(country.properties.name + "===" + neighbour.name + "\tnbofroutes:" + neighbour.nbOfRoutes + "\tc:" + contribution);
 		if(country.properties.name	=== neighbour.name){
-			d3.select("#"+itu).style("fill", "hsl(247, 85%, " + contribution + "%)");
+			selfcontr = contribution;
 		}else{
-			d3.select("#"+itu).style("fill", "hsl(0, 85%, " + contribution + "%)");
-		}
+			d3.select("#"+itu).transition().duration(1500).ease(Math.sqrt).style("fill", "hsl(0, 85%, " + contribution + "%)");
+		}		
 	});
+	console.log(selfcontr);	
+	d3.select("#"+country.id).transition().duration(1500).ease(Math.sqrt).style("fill", "hsl(247, 85%, " + selfcontr + "%)");
 }
 }
