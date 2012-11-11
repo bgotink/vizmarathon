@@ -83,6 +83,14 @@ map.addTooltip = function(country){
 						" to " + window.countryToItu[map.selectedcountry.properties.name] +
 						": " + map.routesBetween(country.properties.name, map.selectedcountry.properties.name));
 		}
+		
+		d3.select("#gtooltip").append("svg:text")
+					.attr("id", "tooltipdesctotal")
+					.attr("class", "tooltipdesc")
+					.attr("x", 10)
+					.attr("y",50)
+					.text("Total routes in " + window.countryToItu[country.properties.name] +
+						": " + routes[country.properties.name].totalNbOfRoutes);
 }
 
 map.routesBetween = function(from, dest){//from, dest = name strings
@@ -123,7 +131,7 @@ map.countryClick = function(country){
 	map.selectedcountry = country;
 	map.hideTooltip();
 	map.addTooltip(country);
-	map.states.selectAll("path").transition().duration(1500).ease(Math.sqrt).style('fill', null);
+	map.states.selectAll("path").transition().duration(1500).ease('quad', 'out').style('fill', null);
 	map.lltexthead.text(country.properties.name);
 	map.lltextl1.text("Country code:" + countryToItu[country.properties.name]);
 	map.lltextl2.text("Total # of routes: " + routes[country.properties.name].totalNbOfRoutes); 
@@ -133,41 +141,55 @@ map.countryClick = function(country){
 		console.log("could not find route data for:" + country.properties.name);
 		return;
 	}
-	cpath.style("fill", "hsl(0, 85%,50%)");
+	//cpath.style("fill", "hsl(0, 85%,50%)");
 	var maxRoutes = 0;
-	rCountry.neighbours.map(function(elem){if(elem.nbOfRoutes > maxRoutes) maxRoutes = elem.nbOfRoutes;});
+	rCountry.neighbours.map(function(elem){if(elem.nbOfRoutes > maxRoutes && elem.name !== country.properties.name) maxRoutes = elem.nbOfRoutes;});
 	var n = maxRoutes;
 	var selfcontr=80;
-	d3.select("#"+country.id).style("fill", "hsl(247, 85%, 100%)");
+	//d3.select("#"+country.id).style("fill", "hsl(247, 85%, 100%)");
 	rCountry.neighbours.forEach(function(neighbour){
 		gneighbour = neighbour;
 		var itu = countryToItu[neighbour.name];
 		contribution = 97 - (50 * (neighbour.nbOfRoutes / n));
 		//console.log(country.properties.name + "===" + neighbour.name + "\tnbofroutes:" + neighbour.nbOfRoutes + "\tc:" + contribution);
 		if(country.properties.name	=== neighbour.name){
-			selfcontr = contribution;
+			selfcontr = 97 - 50*(neighbour.nbOfRoutes / routes[country.properties.name].totalNbOfRoutes);
 		}else{
-			d3.select("#"+itu).transition().duration(1500).ease(Math.sqrt).style("fill", "hsl(0, 85%, " + contribution + "%)");
+			d3.select("#"+itu).transition().duration(1500).ease('quad', 'out').style("fill", "hsl(0, 85%, " + contribution + "%)");
 		}		
 	});
 	console.log(selfcontr);	
-	d3.select("#"+country.id).transition().duration(1500).ease(Math.sqrt).style("fill", "hsl(247, 85%, " + selfcontr + "%)");	
+	d3.select("#"+country.id).transition().duration(1500).ease('quad', 'out').style("fill", "hsl(247, 85%, " + selfcontr + "%)");	
 }
 
 map.fadeCountry = function(itu){
 	var sel = d3.select("#"+itu);
 	t = map.getCentroid(sel);
-	sel.transition().duration(1500).attr("transform", "translate("+t[0]+","+t[1]+")scale(2e-6)");
+	sel.transition().duration(1500).ease('quad', 'out').attr("transform", "translate("+t[0]+","+t[1]+")scale(2e-6)");
 	return t;
 }
 
-map.enterCountry = function(){
-	d3.selectAll("path").transition().duration(1500).attr("transform", "translate(0,0)scale(1)");
+map.enterCountries = function(){
+	d3.selectAll("path").transition().duration(1500).ease('quad', 'out').attr("transform", "translate(0,0)scale(1)");
 }
 
 map.getCentroidOfItu = function(itu){
 	var sel = d3.select("#"+itu);
 	return map.getCentroid(sel);
+}
+
+map.showAllInternal = function(){
+	map.selectedcountry = undefined;
+	for(var country in routes){
+		var total = routes[country].totalNbOfRoutes;
+		var share = map.routesBetween(country, country)/total;
+		var l = 97 - 50*share;
+		d3.select("#" + countryToItu[country]).transition().duration(1500).ease('quad', 'out').style("fill", "hsl(247, 85%,"+l+"%)");
+	}
+	map.lltexthead.text("Fraction of domestic flights");
+	map.lltextl1.text("#domestic flights/total #flights");
+	map.lltextl2.text("Darker: larger percentage of domestic flights");
+	map.lltextl3.text("Click on a country to cancel");
 }
 
 map.getCentroid = function(selection) {
