@@ -16,12 +16,18 @@ function buttonGraph(){
 	setDeselected("mapButton");
 	setHidden("domesticButton");
 	setHidden("internationalButton");
+	setHidden("allButton");
 }
 function buttonMap(){
 	setSelected("mapButton");
 	setDeselected("graphButton");
 	setVisible("domesticButton");
 	setVisible("internationalButton");
+	setVisible("allButton");
+}
+function buttonAll(){
+	alert("comment out");
+	//map.showInternational();
 }
 function buttonDomestic(){
 	map.showAllInternal();
