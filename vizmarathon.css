@@ -1,3 +1,12 @@
+body, html{
+	text-align: center;
+	font-family: Helvetica, sans-serif;
+}
+
+div.horizontal{
+	display:inline;
+}
+
 path.country {
 	fill: rgba(255,255,255,1);
 	stroke: rgba(29,91,85,1);
@@ -36,14 +45,12 @@ path.graphhighlight {
 }
 
 text#tooltip{
-	font-family: Verdana;
 	font-size: 14px;
 	fill: #020202;
 }
 
 svg.map {
 	background-color: hsl(206,58%,95%);
-	font-family: Helvetica;
 	font-weight: bold;
 	font-size: 14px;
 	fill: #020202;

@@ -44,7 +44,7 @@ d3.json("./data/world-countries.json", function(collection) {
 	  .on("click", map.countryClick)
 	  .on("mousemove", map.updateTooltip);
   }
-
+  
   window.countryToItu = {};
   window.ituToCountry = {};
   

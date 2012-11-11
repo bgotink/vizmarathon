@@ -2,6 +2,7 @@ var map = {};
 
 map.w = 1280;
 map.h = 800;
+map.duration = 1500;
 
 map.init = function() {
 map.projection = d3
@@ -42,9 +43,7 @@ map.lltextl3 = map.lltextg.append("svg:text")
 
 map.selectedcountry;
 	
-map.addTooltip = function(country){
-		var x = event.pageX,
-		y = event.pageY;
+map.addTooltip = function(x,y,country){
 		map.svg.append("svg:g")
 				.attr("id", "gtooltip")
 				.attr("class", "tooltip")
@@ -83,6 +82,14 @@ map.addTooltip = function(country){
 						" to " + window.countryToItu[map.selectedcountry.properties.name] +
 						": " + map.routesBetween(country.properties.name, map.selectedcountry.properties.name));
 		}
+		
+		d3.select("#gtooltip").append("svg:text")
+					.attr("id", "tooltipdesctotal")
+					.attr("class", "tooltipdesc")
+					.attr("x", 10)
+					.attr("y",65)
+					.text("Total routes in " + window.countryToItu[country.properties.name] +
+						": " + routes[country.properties.name].totalNbOfRoutes);
 }
 
 map.routesBetween = function(from, dest){//from, dest = name strings
@@ -93,14 +100,10 @@ map.routesBetween = function(from, dest){//from, dest = name strings
 }
 
 map.updateTooltip = function(country){
-	var x = event.pageX,
-		y = event.pageY;
-	if(x > map.w-260)
-		x-=260;
-	if(y > map.h-100)
-		y-=100;
+	var m = d3.mouse(this);
+	var p = map.calcTooltipPos(m[0], m[1]);
 	d3.select("#gtooltip")
-		.attr("transform", "translate(" + x +", " + y + ")");
+		.attr("transform", "translate(" + p[0] +"," + p[1] + ")");
 }
 
 map.hideTooltip = function(){
@@ -109,8 +112,10 @@ map.hideTooltip = function(){
 	
 map.countryOver = function(country){
 	//console.log(country.id);
+	var m = d3.mouse(this);
+	var p = map.calcTooltipPos(m[0], m[1]);
 	d3.select("#" + country.id).classed("countryOver", true);
-	map.addTooltip(country);
+	map.addTooltip(p[0],p[1], country);
 	//d3.select("#" + country.id).style("fill", "hsl(206,10%,75%)");
 }
 
@@ -122,52 +127,78 @@ map.countryOut = function(country){
 map.countryClick = function(country){
 	map.selectedcountry = country;
 	map.hideTooltip();
-	map.addTooltip(country);
-	map.states.selectAll("path").transition().duration(1500).ease(Math.sqrt).style('fill', null);
+	var m = d3.mouse(this);
+	var c = map.calcTooltipPos(m[0], m[1]);
+	map.addTooltip(c[0], c[1], country);
+	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', null);
 	map.lltexthead.text(country.properties.name);
 	map.lltextl1.text("Country code:" + countryToItu[country.properties.name]);
-	map.lltextl2.text("Total # of routes: " + routes[country.properties.name].totalNbOfRoutes); 
-	var cpath = d3.select("#" + country.id);
+	map.lltextl2.text("Total # of routes: " + routes[country.properties.name].totalNbOfRoutes);
 	var rCountry = routes[ituToCountry[country.id]];
 	if(!rCountry){
 		console.log("could not find route data for:" + country.properties.name);
 		return;
 	}
-	cpath.style("fill", "hsl(0, 85%,50%)");
 	var maxRoutes = 0;
-	rCountry.neighbours.map(function(elem){if(elem.nbOfRoutes > maxRoutes) maxRoutes = elem.nbOfRoutes;});
+	rCountry.neighbours.map(function(elem){if(elem.nbOfRoutes > maxRoutes && elem.name !== country.properties.name) maxRoutes = elem.nbOfRoutes;});
 	var n = maxRoutes;
 	var selfcontr=80;
-	d3.select("#"+country.id).style("fill", "hsl(247, 85%, 100%)");
+	//d3.select("#"+country.id).style("fill", "hsl(247, 85%, 100%)");
 	rCountry.neighbours.forEach(function(neighbour){
 		gneighbour = neighbour;
 		var itu = countryToItu[neighbour.name];
 		contribution = 97 - (50 * (neighbour.nbOfRoutes / n));
 		//console.log(country.properties.name + "===" + neighbour.name + "\tnbofroutes:" + neighbour.nbOfRoutes + "\tc:" + contribution);
 		if(country.properties.name	=== neighbour.name){
-			selfcontr = contribution;
+			selfcontr = 97 - 50*(neighbour.nbOfRoutes / routes[country.properties.name].totalNbOfRoutes);
 		}else{
-			d3.select("#"+itu).transition().duration(1500).ease(Math.sqrt).style("fill", "hsl(0, 85%, " + contribution + "%)");
+			d3.select("#"+itu).transition().duration(map.duration).ease('quad', 'out').style("fill", "hsl(0, 85%, " + contribution + "%)");
 		}		
 	});
-	console.log(selfcontr);	
-	d3.select("#"+country.id).transition().duration(1500).ease(Math.sqrt).style("fill", "hsl(247, 85%, " + selfcontr + "%)");	
+	d3.select("#"+country.id).transition().duration(map.duration).ease('quad', 'out').style("fill", "hsl(247, 85%, " + selfcontr + "%)");	
 }
 
 map.fadeCountry = function(itu){
 	var sel = d3.select("#"+itu);
 	t = map.getCentroid(sel);
-	sel.transition().duration(1500).attr("transform", "translate("+t[0]+","+t[1]+")scale(2e-6)");
+	sel.transition().duration(map.duration).ease('quad', 'out').attr("transform", "translate("+t[0]+","+t[1]+")scale(2e-6)");
 	return t;
 }
 
-map.enterCountry = function(){
-	d3.selectAll("path").transition().duration(1500).attr("transform", "translate(0,0)scale(1)");
+map.enterCountries = function(){
+	d3.selectAll("path").transition().duration(map.duration).ease('quad', 'out').attr("transform", "translate(0,0)scale(1)");
 }
 
 map.getCentroidOfItu = function(itu){
 	var sel = d3.select("#"+itu);
 	return map.getCentroid(sel);
+}
+
+map.calcTooltipPos = function(x,y){
+	var dx = 15, dy = 0;
+	if(x > map.w-260){
+		x-=260;
+		dx*=-1;
+	}
+	if(y > map.h-100){
+		y-=100;
+		dy*=-1;
+	}
+	return [x+dx,y+dy];
+}
+
+map.showAllInternal = function(){
+	map.selectedcountry = undefined;
+	for(var country in routes){
+		var total = routes[country].totalNbOfRoutes;
+		var share = map.routesBetween(country, country)/total;
+		var l = 97 - 50*share;
+		d3.select("#" + countryToItu[country]).transition().duration(map.duration).ease('quad', 'out').style("fill", "hsl(247, 85%,"+l+"%)");
+	}
+	map.lltexthead.text("Fraction of domestic flights");
+	map.lltextl1.text("#domestic flights/total #flights");
+	map.lltextl2.text("Darker: larger percentage of domestic flights");
+	map.lltextl3.text("Click on a country to cancel");
 }
 
 map.getCentroid = function(selection) {
