@@ -218,7 +218,7 @@ graph.show =  function(clicked) {
         .on("mouseout", graph.mouseOut);
  
     nodeEnter.append("circle")
-        .attr("r", 4.5);
+        .attr("r", 2.5);
  
     nodeEnter.append("text")
         .attr("dy", ".31em")

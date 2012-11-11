@@ -10,7 +10,7 @@ path.countryOver{
 
 .link, .line {
   fill: none;
-  stroke: #ccc;
+  stroke: hsla(0.00, 0%, 0%, .2);
   stroke-width: 1.5px;
 }
 
@@ -27,7 +27,7 @@ g.graphhighlight {
 line.graphhighlight,
 path.graphhighlight {
     font-color: hsl(247, 85%, 50%);
-    stroke: hsl(247, 85%, 50%);
+    stroke: hsla(247, 85%, 50%, 1);
     fill: none;
 }
 
