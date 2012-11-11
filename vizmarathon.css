@@ -1,3 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu);
+
+body, html{
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+div.horizontal{
+	display:inline;
+}
+
 path.country {
 	fill: rgba(255,255,255,1);
 	stroke: rgba(29,91,85,1);

@@ -4,19 +4,31 @@
     <meta charset="utf-8">
     <title>Visualizing Global Marathon - Challenge 2</title>
 	<link rel="stylesheet" type="text/css" href="vizmarathon.css" />
+	<link rel="stylesheet" type="text/css" href="buttons.css" />
 	<script src="http://mbostock.github.com/d3/d3.v2.js"></script>
-	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>-->
-    
+	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://www.webkit.org/blog/wp-content/themes/webkit/style.css">
     <script type="text/javascript">
-    var isMap = document.location.hash != '#tree';
-    var isTree = !isMap;
+		var isMap = document.location.hash != '#tree';
+		var isTree = !isMap;
     </script>
     
   </head>
-  <body>
-      <a href="#tree" onclick="China();">china!</a>
+  <body onload="buttonMap()">
+		<script src="styling.js"></script>
+		<h1>Are all the countries in the world connected through air routes?</h1>
+		<div class="horizontal">
+			<button id="mapButton" onclick="buttonMap()"><span class="label">Map</span></a>
+			<button id="graphButton" onclick="buttonGraph()"><span class="label">Graph</span></a>
+			<button id="domesticButton" onclick="buttonDomestic()">Domestic flights</button>
+		</div>
+		<br style="clear: both;" />
 		<script src="map.js"></script>
         <script src="graph.js"></script>
   		<script src="vizmarathon.js"></script>
+
+		
+		
   </body>
 </html>
+
