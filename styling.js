@@ -15,14 +15,21 @@ function buttonGraph(){
 	setSelected("graphButton");
 	setDeselected("mapButton");
 	setHidden("domesticButton");
+	setHidden("internationalButton");
 }
 function buttonMap(){
 	setSelected("mapButton");
 	setDeselected("graphButton");
 	setVisible("domesticButton");
+	setVisible("internationalButton");
 }
 function buttonDomestic(){
-	alert("TODO fill in this function");
+	//alert("TODO fill in this function");
+	map.showAllInternal();
+}
+function buttonInternational(){
+	//map.showTotals();
+	alert("uncomment the showTotals line");
 }
 function setSelected(id){
 	var el = document.getElementById(id);
