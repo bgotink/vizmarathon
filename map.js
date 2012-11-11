@@ -272,7 +272,11 @@ map.showCountry = function(country){
     map.state = country.properties.name;
     
 	map.selectedcountry = country;
-	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', "#ffffff");
+	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', "#ffffff").each("end",
+        function() {
+            d3.select(this).style('fill', null);
+        }
+    );
 	map.lltexthead.text(country.properties.name);
 	map.lltextl1.text("Country code:" + countryToItu[country.properties.name]);
 	map.lltextl2.text("Total # of routes: " + (routes[country.properties.name]?routes[country.properties.name].totalNbOfRoutes:0));

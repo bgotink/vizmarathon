@@ -129,8 +129,8 @@ graph.unload = function(callback) {
         .attr("r", 1e-6);
     
     node.select("text")
-        .attr('fill-opacity', 1e-6)
-        .attr('stroke-opacity', 1e-6);
+        .style('fill-opacity', 1e-6)
+        .style('stroke-opacity', 1e-6);
     
     line.attr("stroke-opacity", 1e-6).remove();
     
