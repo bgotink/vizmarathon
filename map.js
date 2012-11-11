@@ -126,7 +126,16 @@ map.countryOut = function(country){
 	map.hideTooltip();
 }
 
+map.resetMap = function(){
+	map.selectedcountry = undefined;
+	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', "#ffffff");
+}
+
 map.countryClick = function(country){
+	if(map.selectedcountry && (map.selectedcountry.properties.name===country.properties.name)){
+		map.resetMap();
+		return;
+	}
 	map.selectedcountry = country;
 	map.hideTooltip();
 	var m = d3.mouse(this);
@@ -135,7 +144,7 @@ map.countryClick = function(country){
 	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', "#ffffff");
 	map.lltexthead.text(country.properties.name);
 	map.lltextl1.text("Country code:" + countryToItu[country.properties.name]);
-	map.lltextl2.text("Total # of routes: " + routes[country.properties.name].totalNbOfRoutes);
+	map.lltextl2.text("Total # of routes: " + (routes[country.properties.name]?routes[country.properties.name].totalNbOfRoutes:0));
 	var rCountry = routes[ituToCountry[country.id]];
 	if(!rCountry){
 		console.log("could not find route data for:" + country.properties.name);
@@ -209,7 +218,7 @@ map.showTotals = function(){
 	for(var country in routes){
 		if(routes[country].totalNbOfRoutes > maxTotal){
 			maxTotal = routes[country].totalNbOfRoutes;
-		};
+		}
 	}
 	for(var country in routes){
 		var cTotal = routes[country].totalNbOfRoutes;
