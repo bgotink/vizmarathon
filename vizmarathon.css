@@ -5,6 +5,84 @@ body, html{
 
 div.horizontal{
 	display:inline;
+	font-weight:bold;
+}
+
+path.country {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(29,91,85,1);
+    stroke-width:  1;
+}
+
+path.countryOver{
+	fill: hsl(206,10%,75%);
+}
+
+.link, .line {
+  fill: none;
+  stroke: hsla(240,64%,27%,.15);
+  stroke-width: 1.5px;
+}
+
+text.graph {
+    white-space: pre;
+}
+
+g.node {
+    font-color: hsla(240,64%,27%,1);
+    stroke: hsla(240,64%,27%,1);
+    fill: hsla(240,64%,27%,1);
+}
+
+g.node.graphhighlight {
+    font-color: hsla(17,82%,66%,1);
+    stroke: hsla(17,82%,66%,1);
+    fill: hsla(17,82%,66%,1);
+}
+
+line.graphhighlight,
+path.graphhighlight {
+    font-color: hsla(17,82%,66%,1);
+    stroke: hsla(17,82%,66%,1);
+    fill: none;
+}
+
+.invisible {
+  display: none;
+}
+
+text#tooltip{
+	font-size: 14px;
+	fill: #020202;
+}
+
+svg.map {
+	background-color: hsl(206,58%,95%);
+	font-weight: bold;
+	font-size: 14px;
+	fill: #020202;
+}
+
+#lltexthead{
+	font-size: 20px;
+}
+
+g#dialog{
+	fill: hsl(50,50%,80%);
+}
+
+#dialogheader{
+	font-size: 20px;
+	fill: hsl(0,0%,0%);
+}
+
+.dialogtext{
+	fill: hsl(0,0%,0%);
+}
+
+/*<<<<<<< HEAD
+div.horizontal{
+	display:inline;
 }
 
 path.country {
@@ -66,4 +144,8 @@ svg.map {
 
 #lltexthead{
 	font-size: 20px;
+=======*/
+.dialoghint{
+	font-weight: normal;
+	font-style: italic;
 }

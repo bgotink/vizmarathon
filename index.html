@@ -14,19 +14,24 @@
     </script>
     
   </head>
-  <body onload="buttonMap()">
+  <body onload="buttonInit()">
 		<script src="styling.js"></script>
-		<h1>Are all the countries in the world connected through air routes?</h1>
-		<div class="horizontal">
+		<h1>Flight route connectivity of countries</h1>
+		<!--<div class="horizontal">-->
 			<button id="mapButton" class="button left" onclick="buttonMap()"><span class="label">Map</span></a>
-			<button id="graphButton" class="button right" onclick="buttonGraph()"><span class="label">Graph</span></a>
-			<button id="domesticButton" onclick="buttonDomestic()">Domestic flights</button>
-			<button id="internationalButton" onclick="buttonInternational()">International flights</button>
-		</div>
+			<button id="graphButton" class="button right" onclick="buttonGraph()"><span class="label">Graph</span></button>
+			<div class="horizontal">
+			</br>Overview maps:
+			</div>
+			<button id="allButton" class="button left" onclick="buttonAll()"><span class="label">All flights</span></a>
+			<button id="domesticButton" class="button middle" onclick="buttonDomestic()"><span class="label">Domestic flights</span></a>
+			<button id="internationalButton" class="button right" onclick="buttonInternational()"><span class="label">International flights</span></button>
+		<!--</div>-->
 		<br style="clear: both;" />
 		<script src="map.js"></script>
         <script src="graph.js"></script>
   		<script src="vizmarathon.js"></script>
+		<script src="story.js"></script>
 
 		
 		

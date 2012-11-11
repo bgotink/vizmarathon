@@ -11,11 +11,20 @@ function removeClass(ele, cls) {
 	}
 }
 
+function buttonInit() {
+	setSelected("mapButton");
+	setDeselected("graphButton");
+	setVisible("domesticButton");
+	setVisible("internationalButton");
+	setVisible("allButton");
+}
+
 function buttonGraph(){
 	setSelected("graphButton");
 	setDeselected("mapButton");
 	setHidden("domesticButton");
 	setHidden("internationalButton");
+	setHidden("allButton");
     
     map.unload(graph.load);
 }
@@ -24,16 +33,18 @@ function buttonMap(){
 	setDeselected("graphButton");
 	setVisible("domesticButton");
 	setVisible("internationalButton");
+	setVisible("allButton");
     
     graph.unload(map.load);
 }
+function buttonAll(){
+	map.showTotals();
+}
 function buttonDomestic(){
-	//alert("TODO fill in this function");
 	map.showAllInternal();
 }
 function buttonInternational(){
-	//map.showTotals();
-	alert("uncomment the showTotals line");
+	map.showInternational();
 }
 function setSelected(id){
 	var el = document.getElementById(id);

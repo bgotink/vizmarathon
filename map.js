@@ -1,6 +1,6 @@
 var map = {};
 
-map.duration = 1500;
+map.duration = 1000;
 
 map.init = function() {
 
@@ -22,6 +22,8 @@ map.states = viz.g1;
 map.lltextg = viz.g2;
 
 map.cachedCentroids = {};
+
+map.state = 'reset';
 
 map.load = function(initial) {
     map.lltexthead = map.lltextg.append("svg:text")
@@ -92,6 +94,23 @@ map.load = function(initial) {
             });
 
         map.enterCountries();
+        
+        if (map.state == 'reset') {
+            return;
+        } else if (map.state == 'total') {
+            map.showTotals();
+            return;
+        } else if (map.state == 'internal') {
+            map.showAllInternal();
+            return;
+        } else if (map.state == 'international') {
+            map.showInternational();
+            return;
+        } else {
+            map.selectedcountry = null;
+            map.showCountry(map.state);
+            return;
+        }
     }
 }
 
@@ -219,20 +238,40 @@ map.countryOut = function(country){
 }
 
 map.resetMap = function(){
+    map.state = 'reset';
 	map.selectedcountry = undefined;
 	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', "#ffffff");
+	map.lltexthead.text("Click on a country");
+	map.lltextl1.text("to view connected countries");
+	map.lltextl2.text("");
+	map.lltextl3.text("");
 }
 
-map.countryClick = function(country){
-	if(map.selectedcountry && (map.selectedcountry.properties.name===country.properties.name)){
-		map.resetMap();
-		return;
-	}
-	map.selectedcountry = country;
+map.countryClick = function(country){	
 	map.hideTooltip();
 	var m = d3.mouse(this);
 	var c = map.calcTooltipPos(m[0], m[1]);
 	map.addTooltip(c[0], c[1], country);
+	map.showCountry(country);
+}
+
+map.showCountry = function(country){
+    if (countryToItu[country] || ituToCountry[country]) {
+        if (countryToItu[country]) {
+            country = countryToItu[country];
+        }
+        
+        country = d3.select('#' + country)[0][0].__data__;
+    }
+    
+	if(map.selectedcountry && (map.selectedcountry.properties.name===country.properties.name)){
+		map.resetMap();
+		
+		return;
+	}
+    map.state = country.properties.name;
+    
+	map.selectedcountry = country;
 	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', "#ffffff");
 	map.lltexthead.text(country.properties.name);
 	map.lltextl1.text("Country code:" + countryToItu[country.properties.name]);
@@ -258,7 +297,14 @@ map.countryClick = function(country){
 			d3.select("#"+itu).transition().duration(map.duration).ease('quad', 'out').style("fill", "hsl(0, 85%, " + contribution + "%)");
 		}		
 	});
-	d3.select("#"+country.id).transition().duration(map.duration).ease('quad', 'out').style("fill", "hsl(247, 85%, " + selfcontr + "%)");	
+	d3.select("#"+country.id).transition().duration(map.duration).ease('quad', 'out').style("fill", "hsl(247, 85%, " + selfcontr + "%)");
+}
+
+map.fadeCountry = function(itu){
+	var sel = d3.select("#"+itu);
+	t = map.getCentroid(sel);
+	sel.transition().duration(map.duration).ease('quad', 'out').attr("transform", "translate("+t[0]+","+t[1]+")scale(2e-6)");
+	return t;
 }
 
 map.enterCountries = function(){
@@ -306,6 +352,8 @@ map.calcTooltipPos = function(x,y){
 }
 
 map.showAllInternal = function(){
+    map.state = 'internal';
+    
 	map.selectedcountry = undefined;
 	for(var country in routes){
 		var total = routes[country].totalNbOfRoutes;
@@ -314,12 +362,14 @@ map.showAllInternal = function(){
 		d3.select("#" + countryToItu[country]).transition().duration(map.duration).ease('quad', 'out').style("fill", "hsl(247, 85%,"+l+"%)");
 	}
 	map.lltexthead.text("Fraction of domestic flights");
-	map.lltextl1.text("#domestic flights/total #flights");
+	map.lltextl1.text("#domestic flights / total #flights");
 	map.lltextl2.text("Darker: larger percentage of domestic flights");
 	map.lltextl3.text("Click on a country to cancel");
 }
 
 map.showTotals = function(){
+    map.state = 'totals';
+    
 	map.selectedcountry = undefined;
 	var maxTotal = 0;
 	for(var country in routes){
@@ -331,11 +381,27 @@ map.showTotals = function(){
 		var cTotal = routes[country].totalNbOfRoutes;
 		var share = cTotal/maxTotal;
 		var l = 95 - 45*share;
-		d3.select("#" + countryToItu[country]).transition().duration(map.duration).ease('quad','out').style("fill", "hsl(0, 85%, " + l + ")"); 
+		d3.select("#" + countryToItu[country]).transition().duration(map.duration).ease('quad','out').style("fill", "hsl(285, 85%, " + l + ")"); 
 	}
 	map.lltexthead.text("Absolute number of flights.");
 	map.lltextl1.text("Move mouse over country for absolute numbers.");
 	map.lltextl2.text("Darker: More flights.");
+	map.lltextl3.text("Click on a country to cancel");
+}
+
+map.showInternational = function(){
+    map.state = 'international';
+    
+	map.selectedcountry = undefined;
+	for(var country in routes){
+		var total = routes[country].totalNbOfRoutes;
+		var share = 1-(map.routesBetween(country, country)/total);
+		var l = 95 - 45*share;
+		d3.select("#" + countryToItu[country]).transition().duration(map.duration).ease('quad', 'out').style("fill", "hsl(0, 85%,"+l+"%)");
+	}
+	map.lltexthead.text("Fraction of international flights");
+	map.lltextl1.text("#international flights / total #flights");
+	map.lltextl2.text("Darker: larger percentage of international flights");
 	map.lltextl3.text("Click on a country to cancel");
 }
 
