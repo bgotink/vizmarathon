@@ -26,14 +26,14 @@ function buttonMap(){
 	setVisible("allButton");
 }
 function buttonAll(){
-	alert("comment out");
-	//map.showInternational();
+	//alert("comment out");
+	map.showTotals();
 }
 function buttonDomestic(){
 	map.showAllInternal();
 }
 function buttonInternational(){
-	map.showTotals();
+	map.showInternational();
 }
 function setSelected(id){
 	var el = document.getElementById(id);

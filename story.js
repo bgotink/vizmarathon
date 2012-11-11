@@ -5,18 +5,23 @@ dialog.height = 200;
 dialog.topmargin = 40;
 dialog.headerheight = 35;
 dialog.lineheight = 20;
+
+dialog.exitDuration = 500;
+dialog.transDuration = 500;
+dialog.clickCatcherOpacityDuration = 500;
+dialog.translatingDuration = 1000;
  
 dialog.init = function(){
 
 dialog.exitClick = function(){
 	//console.log("clickcatcher click");
-	dialog.g.transition().duration(1500).ease("quad", "out").style("opacity",0).remove();
-	dialog.clickCatcher.transition().duration(1500).ease("quad", "out").style("opacity",0).remove();
+	dialog.g.transition().duration(dialog.exitDuration).ease("quad", "out").style("opacity",0).remove();
+	dialog.clickCatcher.transition().duration(dialog.exitDuration).ease("quad", "out").style("opacity",0).remove();
 }
 
 dialog.transition = function(callback){
-	dialog.g.transition().duration(2000).style("opacity", 0).each("end", function(){
-		dialog.g.transition().duration(2000).style("opacity",1);
+	dialog.g.transition().duration(dialog.transDuration).style("opacity", 0).each("end", function(){
+		dialog.g.transition().duration(dialog.transDuration).style("opacity",1);
 		callback();
 	});
 }
@@ -24,8 +29,8 @@ dialog.transition = function(callback){
 dialog.story1 = function(){
 	//console.log("story 1");
 	dialog.transition(function(callback){
-			dialog.clickCatcher.transition().duration(500).style("fill","rgba(0,0,0,0)");
-			dialog.g.transition().duration(1500).attr("transform", "translate(400,100)");
+			dialog.clickCatcher.transition().duration(dialog.clickCatcherOpacityDuration).style("fill","rgba(0,0,0,0)");
+			dialog.g.transition().duration(dialog.translatingDuration).attr("transform", "translate(400,100)");
 			map.showCountry(d3.select("#CUB").data()[0]);
 			dialog.header.text("United States embargo against Cuba.");
 			dialog.textl1.text("What stands out when looking at Cuba's flights, is that there are none to the USA.");
@@ -43,8 +48,8 @@ dialog.story1 = function(){
 dialog.story2 = function(){
 	//console.log("story 2");
 	dialog.transition(function(callback){
-			dialog.clickCatcher.transition().duration(500).style("fill","rgba(0,0,0,0)");
-			dialog.g.transition().duration(1500).attr("transform", "translate(700,150)");
+			dialog.clickCatcher.transition().duration(dialog.clickCatcherOpacityDuration).style("fill","rgba(0,0,0,0)");
+			dialog.g.transition().duration(dialog.translatingDuration).attr("transform", "translate(700,150)");
 			map.showCountry(d3.select("#COD").data()[0]);
 			dialog.header.text("Colonial relations");
 			dialog.textl1.text("Congo used to be a colony of Belgium. To this day it still has quite");
@@ -62,8 +67,8 @@ dialog.story2 = function(){
 dialog.story3 = function(){
 	//console.log("story 3");
 	dialog.transition(function(callback){
-			dialog.clickCatcher.transition().duration(500).style("fill","rgba(0,0,0,0)");
-			dialog.g.transition().duration(1500).attr("transform", "translate(450,150)");
+			dialog.clickCatcher.transition().duration(dialog.clickCatcherOpacityDuration).style("fill","rgba(0,0,0,0)");
+			dialog.g.transition().duration(dialog.translatingDuration).attr("transform", "translate(450,150)");
 			map.showCountry(d3.select("#PRK").data()[0]);
 			dialog.header.text("Missing data.");
 			dialog.textl1.text("Please be aware that not all countries have data available.");
@@ -81,8 +86,8 @@ dialog.story3 = function(){
 dialog.story4 = function(){
 	//console.log("story 4");
 	dialog.transition(function(callback){
-			dialog.clickCatcher.transition().duration(500).style("fill","rgba(0,0,0,0)");
-			dialog.g.transition().duration(1500).attr("transform", "translate(500,25)");
+			dialog.clickCatcher.transition().duration(dialog.clickCatcherOpacityDuration).style("fill","rgba(0,0,0,0)");
+			dialog.g.transition().duration(dialog.translatingDuration).attr("transform", "translate(500,25)");
 			map.showAllInternal();
 			dialog.header.text("Overview maps.");
 			dialog.textl1.text("Above the chart you can pick and view overview maps.");
@@ -100,8 +105,8 @@ dialog.story4 = function(){
 dialog.story5 = function(){
 	//console.log("story 5");
 	dialog.transition(function(callback){
-			dialog.clickCatcher.transition().duration(500).style("fill","rgba(0,0,0,0)");
-			dialog.g.transition().duration(1500).attr("transform", "translate(300,150)");
+			dialog.clickCatcher.transition().duration(dialog.clickCatcherOpacityDuration).style("fill","rgba(0,0,0,0)");
+			dialog.g.transition().duration(dialog.translatingDuration).attr("transform", "translate(300,150)");
 			map.resetMap();
 			dialog.header.text("Discover the fascinating world of flight!");
 			dialog.textl1.text("");
@@ -182,7 +187,7 @@ dialog.show = function(){
 }
 dialog.hide = function(callback){
 	dialog.clickCatcher().remove();
-	dialog.g.transition().duration(2000).style("display", "none");//.call(callback);
+	dialog.g.transition().duration(dialog.translatingDuration).style("display", "none");//.call(callback);
 }
 dialog.welcome = function(){
 			dialog.header.text("Welcome");
