@@ -1,8 +1,6 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu);
-
 body, html{
 	text-align: center;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: Helvetica, sans-serif;
 }
 
 div.horizontal{
@@ -21,8 +19,31 @@ path.countryOver{
 
 .link, .line {
   fill: none;
-  stroke: #ccc;
+  stroke: hsla(240,64%,27%,.15);
   stroke-width: 1.5px;
+}
+
+text.graph {
+    white-space: pre;
+}
+
+g.node {
+    font-color: hsla(240,64%,27%,1);
+    stroke: hsla(240,64%,27%,1);
+    fill: hsla(240,64%,27%,1);
+}
+
+g.node.graphhighlight {
+    font-color: hsla(17,82%,66%,1);
+    stroke: hsla(17,82%,66%,1);
+    fill: hsla(17,82%,66%,1);
+}
+
+line.graphhighlight,
+path.graphhighlight {
+    font-color: hsla(17,82%,66%,1);
+    stroke: hsla(17,82%,66%,1);
+    fill: none;
 }
 
 .invisible {
@@ -30,14 +51,12 @@ path.countryOver{
 }
 
 text#tooltip{
-	font-family: Verdana;
 	font-size: 14px;
 	fill: #020202;
 }
 
 svg.map {
 	background-color: hsl(206,58%,95%);
-	font-family: Helvetica;
 	font-weight: bold;
 	font-size: 14px;
 	fill: #020202;
@@ -46,6 +65,7 @@ svg.map {
 #lltexthead{
 	font-size: 20px;
 }
+
 
 g#dialog{
 	fill: hsl(50,50%,80%);
@@ -58,4 +78,3 @@ g#dialog{
 
 .dialogtext{
 	fill: hsl(0,0%,0%);
-}

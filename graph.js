@@ -9,7 +9,6 @@ graph.TreeNode = function (country) {
     this.name = tmp.name;
     this.children = tmp.children.filter(
         function(c) {
-            console.log(c.name, tmp.name);
             return c.name !== tmp.name;
         }
     );
@@ -37,6 +36,7 @@ graph.TreeNode.prototype.expandChild = function (name) {
                 this.children[idx].y = child.y;
                 this.children[idx].x0 = child.x0;
                 this.children[idx].y0 = child.y0;
+                this.children[idx].highlight = child.highlight;
             }
             
             return this.children[idx];
@@ -73,6 +73,8 @@ graph.init = function() {
     graph.data = new graph.TreeNode('Myanmar');
     graph.storedEdges = {};
     
+    graph.timeoutDelay = 1000;
+    
     graph.show(graph.data);
 }
     
@@ -90,13 +92,14 @@ graph.updateEdges = function(edges) {
     var edgesObj = {};
     
     edges.forEach(function(edge) {
-        console.log(edge.target.id);
         edgesObj["idx" + edge.target.id] = edge;
     });
     
     for (var idx in edgesObj) {
         if (! graph.storedEdges[idx]) {
             newEdges[idx] = edgesObj[idx];
+        } else {
+            graph.storedEdges[idx] = edgesObj[idx];
         }
     }
     
@@ -113,12 +116,24 @@ graph.updateEdges = function(edges) {
     return graph.storedEdges;
 }
 
+graph.shortenName = function(name) {
+    if (!name.match(/\s/) || name.length < 15) {
+        return name;
+    }
+    
+    var matches = name.match(/\b(\w)/g);
+    return matches.join('');    
+}
+
 graph.show =  function(clicked) {    
     var tree = graph.layout,
         diagonal = graph.diagonal,
         root = graph.data;
     
-	var nodes = tree.nodes(root).reverse(),
+
+	var nodes = tree.nodes(root).sort(function(a,b) {
+            return a.id - b.id;
+        }),//.reverse(),
         edges = tree.links(nodes),
         links = edges.filter(function(e) {
             return e.source !== root;
@@ -164,7 +179,7 @@ graph.show =  function(clicked) {
         };
     };
         
-    var lineEnter = line.enter()
+    line.enter()
 	    .append("line")
         .attr("x1", function(d){
 		    return graph.fromPolarX(oldSourceLocation);
@@ -179,30 +194,36 @@ graph.show =  function(clicked) {
             return graph.fromPolarY(oldSourceLocation);
         })
 	    .attr("stroke-width", 2)
-        .attr("class", "line");
+        .attr("class", "line")
+        .on("mouseover", graph.mouseOver)
+        .on("mouseout", graph.mouseOut);
     
-    var linkEnter, linkEnterDone;
-    linkEnterDone = (linkEnter = link.enter())
+    link.enter()
         .append("path")
 		.attr("class", "link")
 		.attr("d", dummyDiagonal(oldSourceLocation))
         .attr("id", function(e) {
             return "" + e.target.id;
-        });
+        })
+        .on("mouseover", graph.mouseOver)
+        .on("mouseout", graph.mouseOut);
             
 	var nodeEnter = node
     	.enter().append("g")
     	.attr("class", "node")
     	.attr("transform", function(d) { return "rotate(" + (oldSourceLocation.x - 90) +")translate(" + oldSourceLocation.y + ")"; })
-        .on("click", function(d) { window.graph.toggle(d); });
+        .on("click", function(d) { window.graph.toggle(d); })
+        .on("mouseover", graph.mouseOver)
+        .on("mouseout", graph.mouseOut);
  
     nodeEnter.append("circle")
-        .attr("r", 4.5);
+        .attr("r", 2.5);
  
     nodeEnter.append("text")
         .attr("dy", ".31em")
-    	.text(function(d) { return d.name; })
-        .attr('fill-opacity', 1e-6);
+    	.text(function(d) { return "    " + graph.shortenName(d.name) + "    "; })
+        .attr('fill-opacity', 1e-6)
+        .attr("class", "graph");
     
     var nodeUpdate = node.transition()
         .duration(graph.duration).ease('quad', 'out')
@@ -213,8 +234,8 @@ graph.show =  function(clicked) {
     	.attr("transform", 
             function(d) {
                 return (d.x < 180)
-                        ? "translate(8)"
-                        : "rotate(180)translate(-8)";
+                        ? "translate(0)"
+                        : "rotate(180)translate(-0)";
             }
         )
         .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; });
@@ -273,13 +294,103 @@ graph.show =  function(clicked) {
     });
 }
 
-graph.toggle = function(node) {
-    if (node === graph.data) {
-        console.log("root clicked");
-        return;
+graph.updateHighlights = function() {
+    var tree = graph.layout,
+        diagonal = graph.diagonal,
+        root = graph.data;
+    
+	var nodes = tree.nodes(root).sort(function(a,b) {
+            return a.id - b.id;
+        }),
+        edges = tree.links(nodes),
+        links = edges.filter(function(e) {
+            return e.source !== root;
+        }),
+        lines = edges.filter(function(e) {
+            return e.source === root;
+        });
+    
+    var node = graph.nodes.selectAll("g.node")
+        .data(nodes);
+    
+    var updatedLinks = graph.updateEdges(links);
+        links = [];
+    for (var idx in updatedLinks) {
+        links.push(updatedLinks[idx]);
+    }
+
+    var link = graph.edges.selectAll("path.link")
+    	.data(links);
+    
+    var line = graph.edges.selectAll("line")
+        .data(lines);
+    
+    node.attr("class", function(d) {
+            return d.highlight ? "node graphhighlight" : "node";
+        });
+        
+    link.attr("class", function(e) {
+            return e.target.highlight ? "link graphhighlight" : "link";
+        });
+        
+    line.attr("class", function(e) {
+            return e.target.highlight ? "line graphhighlight" : "line";
+        });
+}
+
+graph.mouseOver = function(node, id, repeat) {
+    if (typeof node.target !== 'undefined') {
+        node = node.target;
     }
     
-    console.log(node);
+    graph.mouseOverTimer = false;
+    
+    graph.hoveredElem = node.name;
+    
+    var setHighlight = function(n) {
+        var highlight = (n.name === node.name);
+        if (n.children) {
+            n.children.forEach(
+                function(child) {
+                    highlight |= setHighlight(child);
+                }
+            );
+        }
+        return (n.highlight = highlight);
+    }
+    
+    // set the highlights
+    setHighlight(graph.data);
+    
+    // show the update
+    graph.updateHighlights();
+}
+
+graph.mouseOut = function(node, id, repeat) {
+    if (typeof node.target !== 'undefined') {
+        node = node.target;
+    }
+    
+    var clearHighlight = function(n) {
+        n.highlight = false;
+        if (n.children) {
+            n.children.forEach(
+                clearHighlight
+            );
+        }
+    }
+    
+    // clear the highlights
+    clearHighlight(graph.data);
+    
+    // show the update
+    graph.updateHighlights();
+}
+
+graph.toggle = function(node) {
+    if (node === graph.data) {
+        return;
+    }
     
     if (typeof node.children === 'undefined') {
         node.parent.expandChild(node.name);
