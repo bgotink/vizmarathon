@@ -15,7 +15,8 @@ map.path = d3.geo.path()
 
 map.svg = d3.select("body").insert("svg:svg")
     .attr("width", map.w)
-    .attr("height", map.h);
+    .attr("height", map.h)
+	.attr("class", "map");
 
 map.states = map.svg.append("svg:g")
     .attr("id", "states");
@@ -70,7 +71,7 @@ map.addTooltip = function(country){
 					.attr("y",35)
 					.text("Routes from " + window.countryToItu[map.selectedcountry.properties.name] +
 						" to " + window.countryToItu[country.properties.name] +
-						":" + map.routesBetween(map.selectedcountry.properties.name,country.properties.name));
+						": " + map.routesBetween(map.selectedcountry.properties.name,country.properties.name));
 			
 			if(map.selectedcountry.properties.name !== country.properties.name)
 			d3.select("#gtooltip").append("svg:text")
@@ -80,7 +81,7 @@ map.addTooltip = function(country){
 					.attr("y",50)
 					.text("Routes from " + window.countryToItu[country.properties.name] +
 						" to " + window.countryToItu[map.selectedcountry.properties.name] +
-						":" + map.routesBetween(country.properties.name, map.selectedcountry.properties.name));
+						": " + map.routesBetween(country.properties.name, map.selectedcountry.properties.name));
 		}
 }
 
@@ -150,6 +151,32 @@ map.countryClick = function(country){
 		}		
 	});
 	console.log(selfcontr);	
-	d3.select("#"+country.id).transition().duration(1500).ease(Math.sqrt).style("fill", "hsl(247, 85%, " + selfcontr + "%)");
+	d3.select("#"+country.id).transition().duration(1500).ease(Math.sqrt).style("fill", "hsl(247, 85%, " + selfcontr + "%)");	
+}
+
+map.fadeCountry = function(itu){
+	var sel = d3.select("#"+itu);
+	t = map.getCentroid(sel);
+	sel.transition().duration(1500).attr("transform", "translate("+t[0]+","+t[1]+")scale(2e-6)");
+	return t;
+}
+
+map.enterCountry = function(){
+	d3.selectAll("path").transition().duration(1500).attr("transform", "translate(0,0)scale(1)");
+}
+
+map.getCentroidOfItu = function(itu){
+	var sel = d3.select("#"+itu);
+	return map.getCentroid(sel);
+}
+
+map.getCentroid = function(selection) {
+    // get the DOM element from a D3 selection
+    // you could also use "this" inside .each()
+    var element = selection.node(),
+        // use the native SVG interface to get the bounding box
+        bbox = element.getBBox();
+    // return the center of the bounding box
+    return [bbox.x + bbox.width/2, bbox.y + bbox.height/2];
 }
 }
