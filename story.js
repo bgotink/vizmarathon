@@ -54,6 +54,63 @@ dialog.story2 = function(){
 			dialog.textl5.text("Click anywhere on this dialog to continue,");
 			dialog.textl6.text("or click outside of it at any time to close it and skip these stories.");
 			dialog.rect.on("click", null);
+			dialog.rect.on("click", dialog.story3);
+			dialog.show();
+	});
+}
+
+dialog.story3 = function(){
+	//console.log("story 3");
+	dialog.transition(function(callback){
+			dialog.clickCatcher.transition().duration(500).style("fill","rgba(0,0,0,0)");
+			dialog.g.transition().duration(1500).attr("transform", "translate(450,150)");
+			map.showCountry(d3.select("#PRK").data()[0]);
+			dialog.header.text("Missing data.");
+			dialog.textl1.text("Please be aware that not all countries have data available.");
+			dialog.textl2.text("One example is North Korea.");
+			dialog.textl3.text("");
+			dialog.textl4.text("");
+			dialog.textl5.text("Click anywhere on this dialog to continue,");
+			dialog.textl6.text("or click outside of it at any time to close it and skip these stories.");
+			dialog.rect.on("click", null);
+			dialog.rect.on("click", dialog.story4);
+			dialog.show();
+	});
+}
+
+dialog.story4 = function(){
+	//console.log("story 4");
+	dialog.transition(function(callback){
+			dialog.clickCatcher.transition().duration(500).style("fill","rgba(0,0,0,0)");
+			dialog.g.transition().duration(1500).attr("transform", "translate(500,25)");
+			map.showAllInternal();
+			dialog.header.text("Overview maps.");
+			dialog.textl1.text("Above the chart you can pick and view overview maps.");
+			dialog.textl2.text("These give a global overview parameters like ");
+			dialog.textl3.text("the percentage of domestic flights. You can easily");
+			dialog.textl4.text("see here that big, rich countries have a large portion of domestic flights.");
+			dialog.textl5.text("Click anywhere on this dialog to continue,");
+			dialog.textl6.text("or click outside of it at any time to close it and skip these stories.");
+			dialog.rect.on("click", null);
+			dialog.rect.on("click", dialog.story5);
+			dialog.show();
+	});
+}
+
+dialog.story5 = function(){
+	//console.log("story 5");
+	dialog.transition(function(callback){
+			dialog.clickCatcher.transition().duration(500).style("fill","rgba(0,0,0,0)");
+			dialog.g.transition().duration(1500).attr("transform", "translate(300,150)");
+			map.resetMap();
+			dialog.header.text("Discover the fascinating world of flight!");
+			dialog.textl1.text("");
+			dialog.textl2.text("Feel free to click around and gain new, exciting insights!");
+			dialog.textl3.text("To start your journey, click anywhere ");
+			dialog.textl4.text("inside or outside this dialog!");
+			dialog.textl5.text("");
+			dialog.textl6.text("");
+			dialog.rect.on("click", null);
 			dialog.rect.on("click", dialog.exitClick);
 			dialog.show();
 	});
@@ -129,10 +186,10 @@ dialog.hide = function(callback){
 }
 dialog.welcome = function(){
 			dialog.header.text("Welcome");
-			dialog.textl1.text("This is one of the 2012 Visualizing.org Global Marathon entries.");
+			dialog.textl1.text("This is our entry for the 2012 Visualizing.org Global Marathon");
 			dialog.textl2.text("If you want, we'll show you a few interesting facts about the flight data.");
 			dialog.textl3.text("");
-			dialog.textl4.text("");
+			dialog.textl4.text("Glenn Croes, Bram Gotink, Geert Vancampenhout (students of KU Leuven, Belgium)");
 			dialog.textl5.text("Click anywhere on this dialog to continue,");
 			dialog.textl6.text("or click outside of it at any time to close it and skip these stories.");
 			dialog.show();

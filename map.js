@@ -129,6 +129,10 @@ map.countryOut = function(country){
 map.resetMap = function(){
 	map.selectedcountry = undefined;
 	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', "#ffffff");
+	map.lltexthead.text("Click on a country");
+	map.lltextl1.text("to view connected countries");
+	map.lltextl2.text("");
+	map.lltextl3.text("");
 }
 
 map.countryClick = function(country){	
@@ -140,9 +144,10 @@ map.countryClick = function(country){
 }
 
 map.showCountry = function(country){
-	console.log(country);
+	//console.log(country);
 	if(map.selectedcountry && (map.selectedcountry.properties.name===country.properties.name)){
 		map.resetMap();
+		
 		return;
 	}
 	map.selectedcountry = country;
