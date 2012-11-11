@@ -78,3 +78,9 @@ g#dialog{
 
 .dialogtext{
 	fill: hsl(0,0%,0%);
+}
+
+.dialoghint{
+	font-weight: normal;
+	font-style: italic;
+}
