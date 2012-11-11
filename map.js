@@ -53,14 +53,14 @@ map.addTooltip = function(x,y,country){
 					.attr("x", 0)
 					.attr("y", 0)
 					.attr("width", 260)
-					.attr("height", 100)
+					.attr("height", 75)
 					.style("stroke", "hsl(0,50%,0%)")
 					.style("fill", "hsl(50,50%,80%)");
 		d3.select("#gtooltip").append("svg:text")
 					.attr("id", "tooltiphead")
 					.attr("x", 10)
 					.attr("y", 20)
-					.text(country.properties.name)
+					.text(country.properties.name;
 		
 		if(map.selectedcountry){
 			d3.select("#gtooltip").append("svg:text")
@@ -72,7 +72,7 @@ map.addTooltip = function(x,y,country){
 						" to " + window.countryToItu[country.properties.name] +
 						": " + map.routesBetween(map.selectedcountry.properties.name,country.properties.name));
 			
-			if(map.selectedcountry.properties.name !== country.properties.name)
+			if(map.selectedcountry.properties.name !== country.properties.name){
 			d3.select("#gtooltip").append("svg:text")
 					.attr("id", "tooltipdescreturn")
 					.attr("class", "tooltipdesc")
@@ -81,15 +81,17 @@ map.addTooltip = function(x,y,country){
 					.text("Routes from " + window.countryToItu[country.properties.name] +
 						" to " + window.countryToItu[map.selectedcountry.properties.name] +
 						": " + map.routesBetween(country.properties.name, map.selectedcountry.properties.name));
+						}
 		}
-		
+		var r = routes[country.properties.name];
+		var total = r?r.totalNbOfRoutes:0;
 		d3.select("#gtooltip").append("svg:text")
 					.attr("id", "tooltipdesctotal")
 					.attr("class", "tooltipdesc")
 					.attr("x", 10)
 					.attr("y",65)
 					.text("Total routes in " + window.countryToItu[country.properties.name] +
-						": " + routes[country.properties.name].totalNbOfRoutes);
+						": " + total);
 }
 
 map.routesBetween = function(from, dest){//from, dest = name strings
@@ -130,7 +132,7 @@ map.countryClick = function(country){
 	var m = d3.mouse(this);
 	var c = map.calcTooltipPos(m[0], m[1]);
 	map.addTooltip(c[0], c[1], country);
-	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', null);
+	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', "#ffffff");
 	map.lltexthead.text(country.properties.name);
 	map.lltextl1.text("Country code:" + countryToItu[country.properties.name]);
 	map.lltextl2.text("Total # of routes: " + routes[country.properties.name].totalNbOfRoutes);

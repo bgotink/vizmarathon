@@ -102,3 +102,9 @@ loadRouteData = function() {
         }
     });
 }
+//TODO
+//Absolute airline comparison
+//Stories
+//Restjes chinees eten
+//FF fixen
+//IE fixen
