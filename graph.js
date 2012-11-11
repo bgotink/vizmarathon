@@ -40,7 +40,7 @@ graph.TreeNode.prototype.expandChild = function (name) {
 }
 
 graph.init = function() {
-    graph.duration = 5000;
+    graph.duration = 1000;
     graph.idgen = 0;
     
     var radius = graph.radius = 960 / 2
@@ -63,7 +63,10 @@ graph.init = function() {
     graph.edges = graph.svg.append("svg:g");
     graph.nodes = graph.svg.append("svg:g");
     
+    graph.linkCount = 0;
+    
     graph.data = new graph.TreeNode('Myanmar');
+    graph.storedEdges = {};
     
     graph.show(graph.data);
 }
@@ -76,14 +79,49 @@ graph.fromPolarY = function(d) {
     return d.y * Math.sin((d.x - 90) * Math.PI / 180);
 }
 
+graph.updateEdges = function(edges) {
+    var newEdges = {};
+    
+    var edgesObj = {};
+    
+    edges.forEach(function(edge) {
+        console.log(edge.target.id);
+        edgesObj["idx" + edge.target.id] = edge;
+    });
+    
+    for (var idx in edgesObj) {
+        if (! graph.storedEdges[idx]) {
+            newEdges[idx] = edgesObj[idx];
+        }
+    }
+    
+    for (var idx in graph.storedEdges) {
+        if (! edgesObj[idx]) {
+            delete graph.storedEdges[idx];
+        }
+    };
+    
+    for (var idx in newEdges) {
+        graph.storedEdges[idx] = newEdges[idx];
+    }
+    
+    return graph.storedEdges;
+}
+
 graph.show =  function(clicked) {    
     var tree = graph.layout,
         diagonal = graph.diagonal,
         root = graph.data;
     
 	var nodes = tree.nodes(root).reverse(),
-        links = tree.links(nodes);
-        
+        edges = tree.links(nodes),
+        links = edges.filter(function(e) {
+            return e.source !== root;
+        }),
+        lines = edges.filter(function(e) {
+            return e.source === root;
+        });
+    
     if (typeof clicked === 'undefined') {
         clicked = root;
     }
@@ -99,12 +137,18 @@ graph.show =  function(clicked) {
     
     var node = graph.nodes.selectAll("g.node")
         .data(nodes, function(d) { return (typeof d.id === 'undefined') ? (d.id = ++graph.idgen) : d.id; });
+    
+    var updatedLinks = graph.updateEdges(links);
+    links = [];
+    for (var idx in updatedLinks) {
+        links.push(updatedLinks[idx]);
+    }
 
 	var link = graph.edges.selectAll("path.link")
-		.data(links.filter(function(element) { return element.source !== root; }));
+		.data(links);
     
 	var line = graph.edges.selectAll("line")
-	    .data(links.filter(function(element) { return element.source === root; }));
+	    .data(lines);
         
     var dummyDiagonal = function(d) {
         return function(e) {
@@ -114,12 +158,6 @@ graph.show =  function(clicked) {
             });
         };
     };
-    
-    var linkEnter = link.enter()
-        .append("path")
-		.attr("class", "link")
-		.attr("d", dummyDiagonal(oldSourceLocation)
-        );
         
     var lineEnter = line.enter()
 	    .append("line")
@@ -137,7 +175,15 @@ graph.show =  function(clicked) {
         })
 	    .attr("stroke-width", 2)
         .attr("class", "line");
-        
+    
+    var linkEnter, linkEnterDone;
+    linkEnterDone = (linkEnter = link.enter())
+        .append("path")
+		.attr("class", "link")
+		.attr("d", dummyDiagonal(oldSourceLocation))
+        .attr("id", function(e) {
+            return "" + e.target.id;
+        });
             
 	var nodeEnter = node
     	.enter().append("g")
@@ -150,29 +196,28 @@ graph.show =  function(clicked) {
  
     nodeEnter.append("text")
         .attr("dy", ".31em")
-    	.attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
-    	.attr("transform", 
-            function(d) { 
-                if (d == root) return "rotate(-90)translate(-8)"
-                return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)";
-            }
-        )
     	.text(function(d) { return d.name; })
         .attr('fill-opacity', 1e-6);
     
     var nodeUpdate = node.transition()
-        .duration(graph.duration).ease(Math.sqrt)
+        .duration(graph.duration).ease('quad')
         .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"});
         
     nodeUpdate.select("text")
-        .style("fill-opacity", 1);
+        .style("fill-opacity", 1)
+    	.attr("transform", 
+            function(d) {
+                return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)";
+            }
+        )
+    	.attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; });
     
     link.transition()
-        .duration(graph.duration).ease(Math.sqrt)
+        .duration(graph.duration).ease('quad')
         .attr("d", diagonal);
     
     line.transition()
-        .duration(graph.duration).ease(Math.sqrt)
+        .duration(graph.duration).ease('quad')
         .attr("x1", function(d) {
             return graph.fromPolarX(d.source);
         })
@@ -187,7 +232,7 @@ graph.show =  function(clicked) {
         });
         
     var nodeExit = node.exit().transition()
-        .duration(graph.duration).ease(Math.sqrt)
+        .duration(graph.duration).ease('quad')
         .attr("transform", function() { return "rotate(" + (clicked.x - 90) + ")translate(" + clicked.y + ")"})
         .remove();
     
@@ -195,12 +240,12 @@ graph.show =  function(clicked) {
         .style("fill-opacity", 1e-6);
     
     link.exit().transition()
-        .duration(graph.duration).ease(Math.sqrt)
+        .duration(graph.duration).ease('quad')
         .attr("d", dummyDiagonal(clicked))
         .remove();
     
     line.exit().transition()
-        .duration(graph.duration).ease(Math.sqrt)
+        .duration(graph.duration).ease('quad')
         .attr("x1", function(d) {
             return graph.fromPolarX(clicked);
         })
