@@ -92,7 +92,6 @@ graph.updateEdges = function(edges) {
     var edgesObj = {};
     
     edges.forEach(function(edge) {
-        console.log(edge.target.id);
         edgesObj["idx" + edge.target.id] = edge;
     });
     
@@ -222,7 +221,7 @@ graph.show =  function(clicked) {
  
     nodeEnter.append("text")
         .attr("dy", ".31em")
-    	.text(function(d) { return "  " + graph.shortenName(d.name) + "  "; })
+    	.text(function(d) { return "    " + graph.shortenName(d.name) + "    "; })
         .attr('fill-opacity', 1e-6)
         .attr("class", "graph");
     
@@ -390,11 +389,8 @@ graph.mouseOut = function(node, id, repeat) {
 
 graph.toggle = function(node) {
     if (node === graph.data) {
-        console.log("root clicked");
         return;
     }
-    
-    console.log(node);
     
     if (typeof node.children === 'undefined') {
         node.parent.expandChild(node.name);

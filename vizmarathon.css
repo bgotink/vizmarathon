@@ -19,7 +19,7 @@ path.countryOver{
 
 .link, .line {
   fill: none;
-  stroke: hsla(0.00, 0%, 0%, .2);
+  stroke: hsla(240,64%,27%,.15);
   stroke-width: 1.5px;
 }
 
@@ -27,16 +27,22 @@ text.graph {
     white-space: pre;
 }
 
-g.graphhighlight {
-    font-color: hsl(247, 85%, 50%);
-    stroke: hsl(247, 85%, 50%);
-    fill: hsl(247, 85%, 50%);
+g.node {
+    font-color: hsla(240,64%,27%,1);
+    stroke: hsla(240,64%,27%,1);
+    fill: hsla(240,64%,27%,1);
+}
+
+g.node.graphhighlight {
+    font-color: hsla(17,82%,66%,1);
+    stroke: hsla(17,82%,66%,1);
+    fill: hsla(17,82%,66%,1);
 }
 
 line.graphhighlight,
 path.graphhighlight {
-    font-color: hsl(247, 85%, 50%);
-    stroke: hsla(247, 85%, 50%, 1);
+    font-color: hsla(17,82%,66%,1);
+    stroke: hsla(17,82%,66%,1);
     fill: none;
 }
 
