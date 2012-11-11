@@ -14,6 +14,23 @@ path.countryOver{
   stroke-width: 1.5px;
 }
 
+text.graph {
+    white-space: pre;
+}
+
+g.graphhighlight {
+    font-color: hsl(247, 85%, 50%);
+    stroke: hsl(247, 85%, 50%);
+    fill: hsl(247, 85%, 50%);
+}
+
+line.graphhighlight,
+path.graphhighlight {
+    font-color: hsl(247, 85%, 50%);
+    stroke: hsl(247, 85%, 50%);
+    fill: none;
+}
+
 .invisible {
   display: none;
 }
