@@ -25,6 +25,7 @@ function buttonGraph(){
 	setHidden("domesticButton");
 	setHidden("internationalButton");
 	setHidden("allButton");
+    setHidden("buttonLabel");
     
     map.unload(graph.load);
 }
@@ -34,6 +35,7 @@ function buttonMap(){
 	setVisible("domesticButton");
 	setVisible("internationalButton");
 	setVisible("allButton");
+    setVisible("buttonLabel");
     
     graph.unload(map.load);
 }

@@ -240,7 +240,7 @@ map.countryOut = function(country){
 map.resetMap = function(){
     map.state = 'reset';
 	map.selectedcountry = undefined;
-	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', "#ffffff");
+	map.states.selectAll("path").transition().duration(map.duration).ease('quad', 'out').style('fill', null);
 	map.lltexthead.text("Click on a country");
 	map.lltextl1.text("to view connected countries");
 	map.lltextl2.text("");
