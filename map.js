@@ -2,7 +2,7 @@ var map = {};
 
 map.w = 1280;
 map.h = 800;
-map.duration = 1500;
+map.duration = 1000;
 
 map.init = function() {
 map.projection = d3
