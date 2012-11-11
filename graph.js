@@ -7,7 +7,12 @@ graph.TreeNode = function (country) {
     
     var tmp = graph.countryNodes[country].clone();
     this.name = tmp.name;
-    this.children = tmp.children;
+    this.children = tmp.children.filter(
+        function(c) {
+            console.log(c.name, tmp.name);
+            return c.name !== tmp.name;
+        }
+    );
 }
 
 graph.TreeNode.constructor = graph.TreeNode;
@@ -200,24 +205,26 @@ graph.show =  function(clicked) {
         .attr('fill-opacity', 1e-6);
     
     var nodeUpdate = node.transition()
-        .duration(graph.duration).ease('quad')
+        .duration(graph.duration).ease('quad', 'out')
         .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"});
         
     nodeUpdate.select("text")
         .style("fill-opacity", 1)
     	.attr("transform", 
             function(d) {
-                return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)";
+                return (d.x < 180)
+                        ? "translate(8)"
+                        : "rotate(180)translate(-8)";
             }
         )
-    	.attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; });
+        .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; });
     
     link.transition()
-        .duration(graph.duration).ease('quad')
+        .duration(graph.duration).ease('quad', 'out')
         .attr("d", diagonal);
     
     line.transition()
-        .duration(graph.duration).ease('quad')
+        .duration(graph.duration).ease('quad', 'out')
         .attr("x1", function(d) {
             return graph.fromPolarX(d.source);
         })
