@@ -46,3 +46,16 @@ svg.map {
 #lltexthead{
 	font-size: 20px;
 }
+
+g#dialog{
+	fill: hsl(50,50%,80%);
+}
+
+#dialogheader{
+	font-size: 20px;
+	fill: hsl(0,0%,0%);
+}
+
+.dialogtext{
+	fill: hsl(0,0%,0%);
+}
